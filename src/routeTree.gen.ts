@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as CommunicationRouteImport } from './routes/communication'
+import { Route as ImportRouteImport } from './routes/import'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as AcademicsLessonsRouteImport } from './routes/academics.lessons'
 import { Route as AcademicsSubjectsRouteImport } from './routes/academics.subjects'
@@ -39,6 +41,16 @@ const AttendanceRoute = AttendanceRouteImport.update({
 const CommunicationRoute = CommunicationRouteImport.update({
   id: '/communication',
   path: '/communication',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -111,6 +123,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
@@ -129,6 +143,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
@@ -148,6 +164,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
+  '/import': typeof ImportRoute
+  '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
@@ -168,6 +186,8 @@ export interface FileRouteTypes {
     | '/'
     | '/attendance'
     | '/communication'
+    | '/import'
+    | '/onboarding'
     | '/reports'
     | '/academics/lessons'
     | '/academics/subjects'
@@ -186,6 +206,8 @@ export interface FileRouteTypes {
     | '/'
     | '/attendance'
     | '/communication'
+    | '/import'
+    | '/onboarding'
     | '/reports'
     | '/academics/lessons'
     | '/academics/subjects'
@@ -204,6 +226,8 @@ export interface FileRouteTypes {
     | '/'
     | '/attendance'
     | '/communication'
+    | '/import'
+    | '/onboarding'
     | '/reports'
     | '/academics/lessons'
     | '/academics/subjects'
@@ -223,6 +247,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AttendanceRoute: typeof AttendanceRoute
   CommunicationRoute: typeof CommunicationRoute
+  ImportRoute: typeof ImportRoute
+  OnboardingRoute: typeof OnboardingRoute
   ReportsRoute: typeof ReportsRoute
   AcademicsLessonsRoute: typeof AcademicsLessonsRoute
   AcademicsSubjectsRoute: typeof AcademicsSubjectsRoute
@@ -259,6 +285,20 @@ declare module '@tanstack/react-router' {
       path: '/communication'
       fullPath: '/communication'
       preLoaderRoute: typeof CommunicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -359,6 +399,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AttendanceRoute: AttendanceRoute,
   CommunicationRoute: CommunicationRoute,
+  ImportRoute: ImportRoute,
+  OnboardingRoute: OnboardingRoute,
   ReportsRoute: ReportsRoute,
   AcademicsLessonsRoute: AcademicsLessonsRoute,
   AcademicsSubjectsRoute: AcademicsSubjectsRoute,
