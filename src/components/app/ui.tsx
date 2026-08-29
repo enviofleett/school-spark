@@ -62,14 +62,19 @@ export function Panel({
   );
 }
 
-export function Row({ children, className, to, params }: { children: ReactNode; className?: string; to?: string; params?: Record<string, string> }) {
+export function Row({
+  children,
+  className,
+  linkProps,
+}: {
+  children: ReactNode;
+  className?: string;
+  linkProps?: Record<string, unknown>;
+}) {
   const content = <div className={cn("flex items-center gap-3 p-3.5", className)}>{children}</div>;
-  if (!to) return content;
-  return (
-    <Link to={to} params={params} className="block transition-colors hover:bg-foreground/[0.04]">
-      {content}
-    </Link>
-  );
+  if (!linkProps) return content;
+  const AnyLink = Link as unknown as (props: Record<string, unknown>) => ReactNode;
+  return AnyLink({ ...linkProps, className: "block transition-colors hover:bg-foreground/[0.04]", children: content });
 }
 
 export function Avatar({ name, tone = "clay", size = 36 }: { name: string; tone?: "clay" | "moss" | "amber" | "mist"; size?: number }) {
@@ -183,11 +188,7 @@ export function UpgradePrompt({ feature, headline, body }: { feature: FeatureId;
       <p className="font-mono text-[11px] tracking-[0.14em] text-amber uppercase">{requiredPlanFor(feature)} plan</p>
       <h3 className="mt-2 font-display text-[22px] font-semibold">{headline}</h3>
       <p className="mt-2 max-w-[52ch] text-sm text-mist">{body}</p>
-      <Link
-        to="/settings"
-        search={{ tab: "subscription" }}
-        className="mt-5 inline-flex items-center rounded-full bg-clay px-4 py-2 text-[13px] font-medium text-panel"
-      >
+      <Link to="/settings" className="mt-5 inline-flex items-center rounded-full bg-clay px-4 py-2 text-[13px] font-medium text-panel">
         View upgrade options
       </Link>
     </div>
