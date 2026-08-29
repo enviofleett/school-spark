@@ -22,7 +22,8 @@ function rngFrom(seed: string) {
   };
 }
 
-const pick = <T,>(arr: readonly T[], r: number) => arr[Math.floor(r * arr.length) % arr.length];
+const pick = <T,>(arr: readonly T[], r: number): T => arr[Math.floor(r * arr.length) % arr.length] as T;
+const at = <T,>(arr: readonly T[], i: number): T => arr[((i % arr.length) + arr.length) % arr.length] as T;
 
 /* --------------------------------- types --------------------------------- */
 
@@ -319,7 +320,7 @@ function buildDemo() {
     id: `sub-${i + 1}`,
     name,
     code,
-    short: name.split(" ")[0],
+    short: name.split(" ")[0] ?? name,
   }));
 
   // teachers
@@ -329,7 +330,7 @@ function buildDemo() {
     const first = pick(female ? FIRST_NAMES_F : FIRST_NAMES_M, r());
     const last = pick(SURNAMES, r());
     const nSub = 1 + Math.floor(r() * 2);
-    const subjectIds = Array.from({ length: nSub }, (_, k) => subjects[Math.floor(r() * subjects.length + k) % subjects.length].id);
+    const subjectIds = Array.from({ length: nSub }, (_, k) => at(subjects, Math.floor(r() * subjects.length + k)).id);
     const role: Teacher["role"] =
       i === 0 ? "Principal" : i % 7 === 3 ? "Assistant Teacher" : i % 11 === 5 ? "Minder" : "Teacher";
     return {
@@ -369,9 +370,9 @@ function buildDemo() {
         stage,
         section,
         name: `${level} ${section}`,
-        teacherId: teachers[(ci * 3) % teachers.length].id,
-        assistantId: teachers[(ci * 5 + 7) % teachers.length].id,
-        minderId: teachers[(ci * 7 + 11) % teachers.length].id,
+        teacherId: at(teachers, ci * 3).id,
+        assistantId: at(teachers, ci * 5 + 7).id,
+        minderId: at(teachers, ci * 7 + 11).id,
         room: `${stage === "Primary" ? "P" : "S"}-${10 + ci}`,
         capacity: 28 + Math.floor(r() * 8),
       });
@@ -387,7 +388,7 @@ function buildDemo() {
     const female = r() > 0.5;
     const first = pick(female ? FIRST_NAMES_F : FIRST_NAMES_M, r());
     const last = pick(SURNAMES, r());
-    const cls = classes[Math.floor(r() * classes.length)];
+    const cls = at(classes, Math.floor(r() * classes.length));
     const age = (cls.stage === "Primary" ? 5 : 11) + Number(cls.level.replace(/\D/g, "")) + Math.floor(r() * 2);
     const father: Parent = {
       id: `par-${i}-f`,
@@ -411,8 +412,8 @@ function buildDemo() {
     const enrollments: Enrollment[] = SESSIONS.map((session, k) => {
       const back = SESSIONS.length - 1 - k;
       const li = Math.max(0, levelIndex - back);
-      const plan = levelPlan[li];
-      const sec = plan[2][Math.floor(rngFrom(`${i}-${session}`)() * plan[2].length)];
+      const plan = at(levelPlan, li);
+      const sec = at(plan[2], Math.floor(rngFrom(`${i}-${session}`)() * plan[2].length));
       const rr = rngFrom(`enr-${i}-${session}`);
       return {
         session,
@@ -484,24 +485,24 @@ function buildDemo() {
 
   const today = "2026-06-24";
   const schedule: ScheduleEntry[] = [
-    { id: "sch-1", time: "08:00", subjectId: subjects[1].id, classSectionId: classes[6].id, teacherId: teachers[2].id, topic: "Comprehension: inference", state: "done" },
-    { id: "sch-2", time: "09:00", subjectId: subjects[0].id, classSectionId: classes[6].id, teacherId: teachers[2].id, topic: "Fractions: equivalent fractions", state: "live" },
-    { id: "sch-3", time: "11:00", subjectId: subjects[1].id, classSectionId: classes[10].id, teacherId: teachers[2].id, topic: "Narrative writing", state: "upcoming" },
-    { id: "sch-4", time: "13:30", subjectId: subjects[2].id, classSectionId: classes[3].id, teacherId: teachers[2].id, topic: "Living things: habitats", state: "upcoming" },
-    { id: "sch-5", time: "15:00", subjectId: subjects[5].id, classSectionId: classes[14].id, teacherId: teachers[5].id, topic: "Spreadsheets", state: "upcoming" },
+    { id: "sch-1", time: "08:00", subjectId: at(subjects, 1).id, classSectionId: at(classes, 6).id, teacherId: at(teachers, 2).id, topic: "Comprehension: inference", state: "done" },
+    { id: "sch-2", time: "09:00", subjectId: at(subjects, 0).id, classSectionId: at(classes, 6).id, teacherId: at(teachers, 2).id, topic: "Fractions: equivalent fractions", state: "live" },
+    { id: "sch-3", time: "11:00", subjectId: at(subjects, 1).id, classSectionId: at(classes, 10).id, teacherId: at(teachers, 2).id, topic: "Narrative writing", state: "upcoming" },
+    { id: "sch-4", time: "13:30", subjectId: at(subjects, 2).id, classSectionId: at(classes, 3).id, teacherId: at(teachers, 2).id, topic: "Living things: habitats", state: "upcoming" },
+    { id: "sch-5", time: "15:00", subjectId: at(subjects, 5).id, classSectionId: at(classes, 14).id, teacherId: at(teachers, 5).id, topic: "Spreadsheets", state: "upcoming" },
   ];
 
   const lessons: Lesson[] = Array.from({ length: 24 }, (_, i) => {
     const r = rngFrom(`lesson-${i}`);
-    const s = subjects[Math.floor(r() * subjects.length)];
-    const c = classes[Math.floor(r() * classes.length)];
-    const unit = syllabus[s.id][Math.floor(r() * 5)];
+    const s = at(subjects, Math.floor(r() * subjects.length));
+    const c = at(classes, Math.floor(r() * classes.length));
+    const unit = at(syllabus[s.id] ?? [], Math.floor(r() * 5));
     return {
       id: `les-${i + 1}`,
-      teacherId: teachers[Math.floor(r() * teachers.length)].id,
+      teacherId: at(teachers, Math.floor(r() * teachers.length)).id,
       classSectionId: c.id,
       subjectId: s.id,
-      topic: unit.topics[Math.floor(r() * unit.topics.length)].name,
+      topic: at(unit.topics, Math.floor(r() * unit.topics.length)).name,
       date: `2026-06-${String(24 - (i % 18)).padStart(2, "0")}`,
       time: `${String(8 + (i % 7)).padStart(2, "0")}:00`,
       term: CURRENT_TERM,
@@ -518,7 +519,7 @@ function buildDemo() {
         subjectId: s.id,
         teacherId: c.teacherId,
         term: CURRENT_TERM,
-        status: resultStatuses[Math.floor(r() * resultStatuses.length)],
+        status: at(resultStatuses, Math.floor(r() * resultStatuses.length)),
         updated: `2026-06-${String(4 + Math.floor(r() * 20)).padStart(2, "0")}`,
       };
     }),
@@ -606,16 +607,16 @@ function buildDemo() {
   ];
 
   const activity: ActivityItem[] = [
-    { id: "act-1", actor: teachers[4].name, action: "completed a lesson", detail: "Fractions · Primary 3 Alpha · 2h ago", time: "2h ago", tone: "moss" },
-    { id: "act-2", actor: teachers[9].name, action: "submitted Term 2 results", detail: "Primary 4 Beta · awaiting review", time: "4h ago", tone: "clay" },
+    { id: "act-1", actor: at(teachers, 4).name, action: "completed a lesson", detail: "Fractions · Primary 3 Alpha · 2h ago", time: "2h ago", tone: "moss" },
+    { id: "act-2", actor: at(teachers, 9).name, action: "submitted Term 2 results", detail: "Primary 4 Beta · awaiting review", time: "4h ago", tone: "clay" },
     { id: "act-3", actor: "Mrs. Okafor", action: "opened a report card", detail: "David Okafor · yesterday", time: "Yesterday", tone: "amber" },
-    { id: "act-4", actor: teachers[2].name, action: "marked attendance", detail: "Primary 3 Alpha · 2 absent", time: "Yesterday", tone: "moss" },
+    { id: "act-4", actor: at(teachers, 2).name, action: "marked attendance", detail: "Primary 3 Alpha · 2 absent", time: "Yesterday", tone: "moss" },
     { id: "act-5", actor: "Adaeze Nwosu", action: "published a broadcast", detail: "Mid-term break begins Friday", time: "Yesterday", tone: "mist" },
-    { id: "act-6", actor: teachers[11].name, action: "added 3 syllabus topics", detail: "Basic Science · JSS 1", time: "2 days ago", tone: "mist" },
+    { id: "act-6", actor: at(teachers, 11).name, action: "added 3 syllabus topics", detail: "Basic Science · JSS 1", time: "2 days ago", tone: "mist" },
   ];
 
   const notifications: Notification[] = [
-    { id: "n-1", title: "Results submitted for review", detail: `${teachers[9].name} submitted Mathematics · Primary 4 Beta`, time: "12 min ago", group: "Today", unread: true },
+    { id: "n-1", title: "Results submitted for review", detail: `${at(teachers, 9).name} submitted Mathematics · Primary 4 Beta`, time: "12 min ago", group: "Today", unread: true },
     { id: "n-2", title: "Attendance alert", detail: "5 students in Primary 2 Beta marked late", time: "1h ago", group: "Today", unread: true },
     { id: "n-3", title: "New parent message", detail: "Mrs. Okafor replied about David's absence", time: "3h ago", group: "Today", unread: true },
     { id: "n-4", title: "Report cards available", detail: "Term 2 report cards published for 42 students", time: "Yesterday", group: "Earlier", unread: false },
