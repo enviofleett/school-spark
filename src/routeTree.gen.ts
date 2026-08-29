@@ -10,12 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as AcademicsLessonsRouteImport } from './routes/academics.lessons'
 import { Route as AcademicsSubjectsRouteImport } from './routes/academics.subjects'
 import { Route as AcademicsSyllabusRouteImport } from './routes/academics.syllabus'
 import { Route as AcademicsTimetableRouteImport } from './routes/academics.timetable'
 import { Route as ClassesIndexRouteImport } from './routes/classes.index'
 import { Route as ClassesClassIdRouteImport } from './routes/classes.$classId'
+import { Route as ResultsIndexRouteImport } from './routes/results.index'
+import { Route as ResultsBatchIdRouteImport } from './routes/results.$batchId'
 import { Route as StudentsIndexRouteImport } from './routes/students.index'
 import { Route as StudentsStudentIdRouteImport } from './routes/students.$studentId'
 import { Route as TeachersIndexRouteImport } from './routes/teachers.index'
@@ -24,6 +27,11 @@ import { Route as TeachersTeacherIdRouteImport } from './routes/teachers.$teache
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceRoute = AttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicsLessonsRoute = AcademicsLessonsRouteImport.update({
@@ -56,6 +64,16 @@ const ClassesClassIdRoute = ClassesClassIdRouteImport.update({
   path: '/classes/$classId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResultsIndexRoute = ResultsIndexRouteImport.update({
+  id: '/results/',
+  path: '/results/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsBatchIdRoute = ResultsBatchIdRouteImport.update({
+  id: '/results/$batchId',
+  path: '/results/$batchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentsIndexRoute = StudentsIndexRouteImport.update({
   id: '/students/',
   path: '/students/',
@@ -79,41 +97,50 @@ const TeachersTeacherIdRoute = TeachersTeacherIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teachers/': typeof TeachersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes': typeof ClassesIndexRoute
+  '/results': typeof ResultsIndexRoute
   '/students': typeof StudentsIndexRoute
   '/teachers': typeof TeachersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teachers/': typeof TeachersIndexRoute
 }
@@ -121,54 +148,66 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/attendance'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/results/$batchId'
     | '/students/$studentId'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/results/'
     | '/students/'
     | '/teachers/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/attendance'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/results/$batchId'
     | '/students/$studentId'
     | '/teachers/$teacherId'
     | '/classes'
+    | '/results'
     | '/students'
     | '/teachers'
   id:
     | '__root__'
     | '/'
+    | '/attendance'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/results/$batchId'
     | '/students/$studentId'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/results/'
     | '/students/'
     | '/teachers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttendanceRoute: typeof AttendanceRoute
   AcademicsLessonsRoute: typeof AcademicsLessonsRoute
   AcademicsSubjectsRoute: typeof AcademicsSubjectsRoute
   AcademicsSyllabusRoute: typeof AcademicsSyllabusRoute
   AcademicsTimetableRoute: typeof AcademicsTimetableRoute
   ClassesClassIdRoute: typeof ClassesClassIdRoute
+  ResultsBatchIdRoute: typeof ResultsBatchIdRoute
   StudentsStudentIdRoute: typeof StudentsStudentIdRoute
   TeachersTeacherIdRoute: typeof TeachersTeacherIdRoute
   ClassesIndexRoute: typeof ClassesIndexRoute
+  ResultsIndexRoute: typeof ResultsIndexRoute
   StudentsIndexRoute: typeof StudentsIndexRoute
   TeachersIndexRoute: typeof TeachersIndexRoute
 }
@@ -180,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance': {
+      id: '/attendance'
+      path: '/attendance'
+      fullPath: '/attendance'
+      preLoaderRoute: typeof AttendanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academics/lessons': {
@@ -224,6 +270,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassesClassIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/results/': {
+      id: '/results/'
+      path: '/results'
+      fullPath: '/results/'
+      preLoaderRoute: typeof ResultsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results/$batchId': {
+      id: '/results/$batchId'
+      path: '/results/$batchId'
+      fullPath: '/results/$batchId'
+      preLoaderRoute: typeof ResultsBatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/students/': {
       id: '/students/'
       path: '/students'
@@ -257,14 +317,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttendanceRoute: AttendanceRoute,
   AcademicsLessonsRoute: AcademicsLessonsRoute,
   AcademicsSubjectsRoute: AcademicsSubjectsRoute,
   AcademicsSyllabusRoute: AcademicsSyllabusRoute,
   AcademicsTimetableRoute: AcademicsTimetableRoute,
   ClassesClassIdRoute: ClassesClassIdRoute,
+  ResultsBatchIdRoute: ResultsBatchIdRoute,
   StudentsStudentIdRoute: StudentsStudentIdRoute,
   TeachersTeacherIdRoute: TeachersTeacherIdRoute,
   ClassesIndexRoute: ClassesIndexRoute,
+  ResultsIndexRoute: ResultsIndexRoute,
   StudentsIndexRoute: StudentsIndexRoute,
   TeachersIndexRoute: TeachersIndexRoute,
 }
