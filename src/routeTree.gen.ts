@@ -10,12 +10,50 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcademicsLessonsRouteImport } from './routes/academics.lessons'
+import { Route as AcademicsSubjectsRouteImport } from './routes/academics.subjects'
+import { Route as AcademicsSyllabusRouteImport } from './routes/academics.syllabus'
+import { Route as AcademicsTimetableRouteImport } from './routes/academics.timetable'
+import { Route as ClassesIndexRouteImport } from './routes/classes.index'
+import { Route as ClassesClassIdRouteImport } from './routes/classes.$classId'
 import { Route as StudentsIndexRouteImport } from './routes/students.index'
 import { Route as StudentsStudentIdRouteImport } from './routes/students.$studentId'
+import { Route as TeachersIndexRouteImport } from './routes/teachers.index'
+import { Route as TeachersTeacherIdRouteImport } from './routes/teachers.$teacherId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicsLessonsRoute = AcademicsLessonsRouteImport.update({
+  id: '/academics/lessons',
+  path: '/academics/lessons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicsSubjectsRoute = AcademicsSubjectsRouteImport.update({
+  id: '/academics/subjects',
+  path: '/academics/subjects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicsSyllabusRoute = AcademicsSyllabusRouteImport.update({
+  id: '/academics/syllabus',
+  path: '/academics/syllabus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicsTimetableRoute = AcademicsTimetableRouteImport.update({
+  id: '/academics/timetable',
+  path: '/academics/timetable',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesIndexRoute = ClassesIndexRouteImport.update({
+  id: '/classes/',
+  path: '/classes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesClassIdRoute = ClassesClassIdRouteImport.update({
+  id: '/classes/$classId',
+  path: '/classes/$classId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudentsIndexRoute = StudentsIndexRouteImport.update({
@@ -28,35 +66,111 @@ const StudentsStudentIdRoute = StudentsStudentIdRouteImport.update({
   path: '/students/$studentId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeachersIndexRoute = TeachersIndexRouteImport.update({
+  id: '/teachers/',
+  path: '/teachers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeachersTeacherIdRoute = TeachersTeacherIdRouteImport.update({
+  id: '/teachers/$teacherId',
+  path: '/teachers/$teacherId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academics/lessons': typeof AcademicsLessonsRoute
+  '/academics/subjects': typeof AcademicsSubjectsRoute
+  '/academics/syllabus': typeof AcademicsSyllabusRoute
+  '/academics/timetable': typeof AcademicsTimetableRoute
+  '/classes/$classId': typeof ClassesClassIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teachers/$teacherId': typeof TeachersTeacherIdRoute
+  '/classes/': typeof ClassesIndexRoute
   '/students/': typeof StudentsIndexRoute
+  '/teachers/': typeof TeachersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/academics/lessons': typeof AcademicsLessonsRoute
+  '/academics/subjects': typeof AcademicsSubjectsRoute
+  '/academics/syllabus': typeof AcademicsSyllabusRoute
+  '/academics/timetable': typeof AcademicsTimetableRoute
+  '/classes/$classId': typeof ClassesClassIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teachers/$teacherId': typeof TeachersTeacherIdRoute
+  '/classes': typeof ClassesIndexRoute
   '/students': typeof StudentsIndexRoute
+  '/teachers': typeof TeachersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academics/lessons': typeof AcademicsLessonsRoute
+  '/academics/subjects': typeof AcademicsSubjectsRoute
+  '/academics/syllabus': typeof AcademicsSyllabusRoute
+  '/academics/timetable': typeof AcademicsTimetableRoute
+  '/classes/$classId': typeof ClassesClassIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teachers/$teacherId': typeof TeachersTeacherIdRoute
+  '/classes/': typeof ClassesIndexRoute
   '/students/': typeof StudentsIndexRoute
+  '/teachers/': typeof TeachersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/students/$studentId' | '/students/'
+  fullPaths:
+    | '/'
+    | '/academics/lessons'
+    | '/academics/subjects'
+    | '/academics/syllabus'
+    | '/academics/timetable'
+    | '/classes/$classId'
+    | '/students/$studentId'
+    | '/teachers/$teacherId'
+    | '/classes/'
+    | '/students/'
+    | '/teachers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/students/$studentId' | '/students'
-  id: '__root__' | '/' | '/students/$studentId' | '/students/'
+  to:
+    | '/'
+    | '/academics/lessons'
+    | '/academics/subjects'
+    | '/academics/syllabus'
+    | '/academics/timetable'
+    | '/classes/$classId'
+    | '/students/$studentId'
+    | '/teachers/$teacherId'
+    | '/classes'
+    | '/students'
+    | '/teachers'
+  id:
+    | '__root__'
+    | '/'
+    | '/academics/lessons'
+    | '/academics/subjects'
+    | '/academics/syllabus'
+    | '/academics/timetable'
+    | '/classes/$classId'
+    | '/students/$studentId'
+    | '/teachers/$teacherId'
+    | '/classes/'
+    | '/students/'
+    | '/teachers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademicsLessonsRoute: typeof AcademicsLessonsRoute
+  AcademicsSubjectsRoute: typeof AcademicsSubjectsRoute
+  AcademicsSyllabusRoute: typeof AcademicsSyllabusRoute
+  AcademicsTimetableRoute: typeof AcademicsTimetableRoute
+  ClassesClassIdRoute: typeof ClassesClassIdRoute
   StudentsStudentIdRoute: typeof StudentsStudentIdRoute
+  TeachersTeacherIdRoute: typeof TeachersTeacherIdRoute
+  ClassesIndexRoute: typeof ClassesIndexRoute
   StudentsIndexRoute: typeof StudentsIndexRoute
+  TeachersIndexRoute: typeof TeachersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +180,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academics/lessons': {
+      id: '/academics/lessons'
+      path: '/academics/lessons'
+      fullPath: '/academics/lessons'
+      preLoaderRoute: typeof AcademicsLessonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academics/subjects': {
+      id: '/academics/subjects'
+      path: '/academics/subjects'
+      fullPath: '/academics/subjects'
+      preLoaderRoute: typeof AcademicsSubjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academics/syllabus': {
+      id: '/academics/syllabus'
+      path: '/academics/syllabus'
+      fullPath: '/academics/syllabus'
+      preLoaderRoute: typeof AcademicsSyllabusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academics/timetable': {
+      id: '/academics/timetable'
+      path: '/academics/timetable'
+      fullPath: '/academics/timetable'
+      preLoaderRoute: typeof AcademicsTimetableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/': {
+      id: '/classes/'
+      path: '/classes'
+      fullPath: '/classes/'
+      preLoaderRoute: typeof ClassesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/$classId': {
+      id: '/classes/$classId'
+      path: '/classes/$classId'
+      fullPath: '/classes/$classId'
+      preLoaderRoute: typeof ClassesClassIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/students/': {
@@ -82,13 +238,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentsStudentIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teachers/': {
+      id: '/teachers/'
+      path: '/teachers'
+      fullPath: '/teachers/'
+      preLoaderRoute: typeof TeachersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teachers/$teacherId': {
+      id: '/teachers/$teacherId'
+      path: '/teachers/$teacherId'
+      fullPath: '/teachers/$teacherId'
+      preLoaderRoute: typeof TeachersTeacherIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademicsLessonsRoute: AcademicsLessonsRoute,
+  AcademicsSubjectsRoute: AcademicsSubjectsRoute,
+  AcademicsSyllabusRoute: AcademicsSyllabusRoute,
+  AcademicsTimetableRoute: AcademicsTimetableRoute,
+  ClassesClassIdRoute: ClassesClassIdRoute,
   StudentsStudentIdRoute: StudentsStudentIdRoute,
+  TeachersTeacherIdRoute: TeachersTeacherIdRoute,
+  ClassesIndexRoute: ClassesIndexRoute,
   StudentsIndexRoute: StudentsIndexRoute,
+  TeachersIndexRoute: TeachersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
