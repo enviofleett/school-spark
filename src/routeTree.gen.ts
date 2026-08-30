@@ -23,6 +23,11 @@ import { Route as AcademicsSyllabusRouteImport } from './routes/academics.syllab
 import { Route as AcademicsTimetableRouteImport } from './routes/academics.timetable'
 import { Route as ClassesIndexRouteImport } from './routes/classes.index'
 import { Route as ClassesClassIdRouteImport } from './routes/classes.$classId'
+import { Route as ParentIndexRouteImport } from './routes/parent.index'
+import { Route as ParentAttendanceRouteImport } from './routes/parent.attendance'
+import { Route as ParentMessagesRouteImport } from './routes/parent.messages'
+import { Route as ParentReportsRouteImport } from './routes/parent.reports'
+import { Route as ParentResultsRouteImport } from './routes/parent.results'
 import { Route as ResultsIndexRouteImport } from './routes/results.index'
 import { Route as ResultsBatchIdRouteImport } from './routes/results.$batchId'
 import { Route as StudentsIndexRouteImport } from './routes/students.index'
@@ -103,6 +108,31 @@ const ClassesClassIdRoute = ClassesClassIdRouteImport.update({
   path: '/classes/$classId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ParentIndexRoute = ParentIndexRouteImport.update({
+  id: '/parent/',
+  path: '/parent/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentAttendanceRoute = ParentAttendanceRouteImport.update({
+  id: '/parent/attendance',
+  path: '/parent/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentMessagesRoute = ParentMessagesRouteImport.update({
+  id: '/parent/messages',
+  path: '/parent/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentReportsRoute = ParentReportsRouteImport.update({
+  id: '/parent/reports',
+  path: '/parent/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentResultsRoute = ParentResultsRouteImport.update({
+  id: '/parent/results',
+  path: '/parent/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsIndexRoute = ResultsIndexRouteImport.update({
   id: '/results/',
   path: '/results/',
@@ -163,11 +193,16 @@ export interface FileRoutesByFullPath {
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/parent/': typeof ParentIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -188,11 +223,16 @@ export interface FileRoutesByTo {
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes': typeof ClassesIndexRoute
+  '/parent': typeof ParentIndexRoute
   '/results': typeof ResultsIndexRoute
   '/students': typeof StudentsIndexRoute
   '/teacher': typeof TeacherIndexRoute
@@ -214,11 +254,16 @@ export interface FileRoutesById {
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/parent/': typeof ParentIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -241,11 +286,16 @@ export interface FileRouteTypes {
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/parent/'
     | '/results/'
     | '/students/'
     | '/teacher/'
@@ -266,11 +316,16 @@ export interface FileRouteTypes {
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes'
+    | '/parent'
     | '/results'
     | '/students'
     | '/teacher'
@@ -291,11 +346,16 @@ export interface FileRouteTypes {
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/parent/'
     | '/results/'
     | '/students/'
     | '/teacher/'
@@ -317,11 +377,16 @@ export interface RootRouteChildren {
   AcademicsSyllabusRoute: typeof AcademicsSyllabusRoute
   AcademicsTimetableRoute: typeof AcademicsTimetableRoute
   ClassesClassIdRoute: typeof ClassesClassIdRoute
+  ParentAttendanceRoute: typeof ParentAttendanceRoute
+  ParentMessagesRoute: typeof ParentMessagesRoute
+  ParentReportsRoute: typeof ParentReportsRoute
+  ParentResultsRoute: typeof ParentResultsRoute
   ResultsBatchIdRoute: typeof ResultsBatchIdRoute
   StudentsStudentIdRoute: typeof StudentsStudentIdRoute
   TeacherClassesRoute: typeof TeacherClassesRoute
   TeachersTeacherIdRoute: typeof TeachersTeacherIdRoute
   ClassesIndexRoute: typeof ClassesIndexRoute
+  ParentIndexRoute: typeof ParentIndexRoute
   ResultsIndexRoute: typeof ResultsIndexRoute
   StudentsIndexRoute: typeof StudentsIndexRoute
   TeacherIndexRoute: typeof TeacherIndexRoute
@@ -429,6 +494,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassesClassIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/parent/': {
+      id: '/parent/'
+      path: '/parent'
+      fullPath: '/parent/'
+      preLoaderRoute: typeof ParentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/attendance': {
+      id: '/parent/attendance'
+      path: '/parent/attendance'
+      fullPath: '/parent/attendance'
+      preLoaderRoute: typeof ParentAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/messages': {
+      id: '/parent/messages'
+      path: '/parent/messages'
+      fullPath: '/parent/messages'
+      preLoaderRoute: typeof ParentMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/reports': {
+      id: '/parent/reports'
+      path: '/parent/reports'
+      fullPath: '/parent/reports'
+      preLoaderRoute: typeof ParentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/results': {
+      id: '/parent/results'
+      path: '/parent/results'
+      fullPath: '/parent/results'
+      preLoaderRoute: typeof ParentResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/results/': {
       id: '/results/'
       path: '/results'
@@ -509,11 +609,16 @@ const rootRouteChildren: RootRouteChildren = {
   AcademicsSyllabusRoute: AcademicsSyllabusRoute,
   AcademicsTimetableRoute: AcademicsTimetableRoute,
   ClassesClassIdRoute: ClassesClassIdRoute,
+  ParentAttendanceRoute: ParentAttendanceRoute,
+  ParentMessagesRoute: ParentMessagesRoute,
+  ParentReportsRoute: ParentReportsRoute,
+  ParentResultsRoute: ParentResultsRoute,
   ResultsBatchIdRoute: ResultsBatchIdRoute,
   StudentsStudentIdRoute: StudentsStudentIdRoute,
   TeacherClassesRoute: TeacherClassesRoute,
   TeachersTeacherIdRoute: TeachersTeacherIdRoute,
   ClassesIndexRoute: ClassesIndexRoute,
+  ParentIndexRoute: ParentIndexRoute,
   ResultsIndexRoute: ResultsIndexRoute,
   StudentsIndexRoute: StudentsIndexRoute,
   TeacherIndexRoute: TeacherIndexRoute,
