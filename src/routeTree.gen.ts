@@ -10,11 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as CommunicationRouteImport } from './routes/communication'
 import { Route as ImportRouteImport } from './routes/import'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AcademicsLessonsRouteImport } from './routes/academics.lessons'
 import { Route as AcademicsSubjectsRouteImport } from './routes/academics.subjects'
 import { Route as AcademicsSyllabusRouteImport } from './routes/academics.syllabus'
@@ -31,6 +33,11 @@ import { Route as TeachersTeacherIdRouteImport } from './routes/teachers.$teache
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsRoute = AdmissionsRouteImport.update({
+  id: '/admissions',
+  path: '/admissions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AttendanceRoute = AttendanceRouteImport.update({
@@ -56,6 +63,11 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicsLessonsRoute = AcademicsLessonsRouteImport.update({
@@ -121,11 +133,13 @@ const TeachersTeacherIdRoute = TeachersTeacherIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
@@ -141,11 +155,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
@@ -162,11 +178,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
@@ -184,11 +202,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
@@ -204,11 +224,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
@@ -224,11 +246,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
@@ -245,11 +269,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdmissionsRoute: typeof AdmissionsRoute
   AttendanceRoute: typeof AttendanceRoute
   CommunicationRoute: typeof CommunicationRoute
   ImportRoute: typeof ImportRoute
   OnboardingRoute: typeof OnboardingRoute
   ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
   AcademicsLessonsRoute: typeof AcademicsLessonsRoute
   AcademicsSubjectsRoute: typeof AcademicsSubjectsRoute
   AcademicsSyllabusRoute: typeof AcademicsSyllabusRoute
@@ -271,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admissions': {
+      id: '/admissions'
+      path: '/admissions'
+      fullPath: '/admissions'
+      preLoaderRoute: typeof AdmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/attendance': {
@@ -306,6 +339,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academics/lessons': {
@@ -397,11 +437,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdmissionsRoute: AdmissionsRoute,
   AttendanceRoute: AttendanceRoute,
   CommunicationRoute: CommunicationRoute,
   ImportRoute: ImportRoute,
   OnboardingRoute: OnboardingRoute,
   ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
   AcademicsLessonsRoute: AcademicsLessonsRoute,
   AcademicsSubjectsRoute: AcademicsSubjectsRoute,
   AcademicsSyllabusRoute: AcademicsSyllabusRoute,
