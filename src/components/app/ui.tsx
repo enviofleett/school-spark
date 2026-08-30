@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { createElement, type ComponentType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { requiredPlanFor, type FeatureId } from "@/lib/entitlements";
 import { useApp } from "@/lib/app-state";
