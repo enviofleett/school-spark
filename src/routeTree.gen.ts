@@ -10,27 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as CommunicationRouteImport } from './routes/communication'
 import { Route as ImportRouteImport } from './routes/import'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AcademicsLessonsRouteImport } from './routes/academics.lessons'
 import { Route as AcademicsSubjectsRouteImport } from './routes/academics.subjects'
 import { Route as AcademicsSyllabusRouteImport } from './routes/academics.syllabus'
 import { Route as AcademicsTimetableRouteImport } from './routes/academics.timetable'
 import { Route as ClassesIndexRouteImport } from './routes/classes.index'
 import { Route as ClassesClassIdRouteImport } from './routes/classes.$classId'
+import { Route as ParentIndexRouteImport } from './routes/parent.index'
+import { Route as ParentAttendanceRouteImport } from './routes/parent.attendance'
+import { Route as ParentMessagesRouteImport } from './routes/parent.messages'
+import { Route as ParentReportsRouteImport } from './routes/parent.reports'
+import { Route as ParentResultsRouteImport } from './routes/parent.results'
 import { Route as ResultsIndexRouteImport } from './routes/results.index'
 import { Route as ResultsBatchIdRouteImport } from './routes/results.$batchId'
 import { Route as StudentsIndexRouteImport } from './routes/students.index'
 import { Route as StudentsStudentIdRouteImport } from './routes/students.$studentId'
+import { Route as TeacherIndexRouteImport } from './routes/teacher.index'
+import { Route as TeacherClassesRouteImport } from './routes/teacher.classes'
 import { Route as TeachersIndexRouteImport } from './routes/teachers.index'
 import { Route as TeachersTeacherIdRouteImport } from './routes/teachers.$teacherId'
+import { Route as TeacherClassClassIdRouteImport } from './routes/teacher.class.$classId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsRoute = AdmissionsRouteImport.update({
+  id: '/admissions',
+  path: '/admissions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AttendanceRoute = AttendanceRouteImport.update({
@@ -56,6 +71,11 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicsLessonsRoute = AcademicsLessonsRouteImport.update({
@@ -88,6 +108,31 @@ const ClassesClassIdRoute = ClassesClassIdRouteImport.update({
   path: '/classes/$classId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ParentIndexRoute = ParentIndexRouteImport.update({
+  id: '/parent/',
+  path: '/parent/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentAttendanceRoute = ParentAttendanceRouteImport.update({
+  id: '/parent/attendance',
+  path: '/parent/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentMessagesRoute = ParentMessagesRouteImport.update({
+  id: '/parent/messages',
+  path: '/parent/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentReportsRoute = ParentReportsRouteImport.update({
+  id: '/parent/reports',
+  path: '/parent/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentResultsRoute = ParentResultsRouteImport.update({
+  id: '/parent/results',
+  path: '/parent/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsIndexRoute = ResultsIndexRouteImport.update({
   id: '/results/',
   path: '/results/',
@@ -108,6 +153,16 @@ const StudentsStudentIdRoute = StudentsStudentIdRouteImport.update({
   path: '/students/$studentId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeacherIndexRoute = TeacherIndexRouteImport.update({
+  id: '/teacher/',
+  path: '/teacher/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeacherClassesRoute = TeacherClassesRouteImport.update({
+  id: '/teacher/classes',
+  path: '/teacher/classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeachersIndexRoute = TeachersIndexRouteImport.update({
   id: '/teachers/',
   path: '/teachers/',
@@ -118,150 +173,225 @@ const TeachersTeacherIdRoute = TeachersTeacherIdRouteImport.update({
   path: '/teachers/$teacherId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeacherClassClassIdRoute = TeacherClassClassIdRouteImport.update({
+  id: '/teacher/class/$classId',
+  path: '/teacher/class/$classId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/parent/': typeof ParentIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
+  '/teacher/': typeof TeacherIndexRoute
   '/teachers/': typeof TeachersIndexRoute
+  '/teacher/class/$classId': typeof TeacherClassClassIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes': typeof ClassesIndexRoute
+  '/parent': typeof ParentIndexRoute
   '/results': typeof ResultsIndexRoute
   '/students': typeof StudentsIndexRoute
+  '/teacher': typeof TeacherIndexRoute
   '/teachers': typeof TeachersIndexRoute
+  '/teacher/class/$classId': typeof TeacherClassClassIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admissions': typeof AdmissionsRoute
   '/attendance': typeof AttendanceRoute
   '/communication': typeof CommunicationRoute
   '/import': typeof ImportRoute
   '/onboarding': typeof OnboardingRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/academics/lessons': typeof AcademicsLessonsRoute
   '/academics/subjects': typeof AcademicsSubjectsRoute
   '/academics/syllabus': typeof AcademicsSyllabusRoute
   '/academics/timetable': typeof AcademicsTimetableRoute
   '/classes/$classId': typeof ClassesClassIdRoute
+  '/parent/attendance': typeof ParentAttendanceRoute
+  '/parent/messages': typeof ParentMessagesRoute
+  '/parent/reports': typeof ParentReportsRoute
+  '/parent/results': typeof ParentResultsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
+  '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
+  '/parent/': typeof ParentIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
+  '/teacher/': typeof TeacherIndexRoute
   '/teachers/': typeof TeachersIndexRoute
+  '/teacher/class/$classId': typeof TeacherClassClassIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
+    | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/parent/'
     | '/results/'
     | '/students/'
+    | '/teacher/'
     | '/teachers/'
+    | '/teacher/class/$classId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
+    | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes'
+    | '/parent'
     | '/results'
     | '/students'
+    | '/teacher'
     | '/teachers'
+    | '/teacher/class/$classId'
   id:
     | '__root__'
     | '/'
+    | '/admissions'
     | '/attendance'
     | '/communication'
     | '/import'
     | '/onboarding'
     | '/reports'
+    | '/settings'
     | '/academics/lessons'
     | '/academics/subjects'
     | '/academics/syllabus'
     | '/academics/timetable'
     | '/classes/$classId'
+    | '/parent/attendance'
+    | '/parent/messages'
+    | '/parent/reports'
+    | '/parent/results'
     | '/results/$batchId'
     | '/students/$studentId'
+    | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
+    | '/parent/'
     | '/results/'
     | '/students/'
+    | '/teacher/'
     | '/teachers/'
+    | '/teacher/class/$classId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdmissionsRoute: typeof AdmissionsRoute
   AttendanceRoute: typeof AttendanceRoute
   CommunicationRoute: typeof CommunicationRoute
   ImportRoute: typeof ImportRoute
   OnboardingRoute: typeof OnboardingRoute
   ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
   AcademicsLessonsRoute: typeof AcademicsLessonsRoute
   AcademicsSubjectsRoute: typeof AcademicsSubjectsRoute
   AcademicsSyllabusRoute: typeof AcademicsSyllabusRoute
   AcademicsTimetableRoute: typeof AcademicsTimetableRoute
   ClassesClassIdRoute: typeof ClassesClassIdRoute
+  ParentAttendanceRoute: typeof ParentAttendanceRoute
+  ParentMessagesRoute: typeof ParentMessagesRoute
+  ParentReportsRoute: typeof ParentReportsRoute
+  ParentResultsRoute: typeof ParentResultsRoute
   ResultsBatchIdRoute: typeof ResultsBatchIdRoute
   StudentsStudentIdRoute: typeof StudentsStudentIdRoute
+  TeacherClassesRoute: typeof TeacherClassesRoute
   TeachersTeacherIdRoute: typeof TeachersTeacherIdRoute
   ClassesIndexRoute: typeof ClassesIndexRoute
+  ParentIndexRoute: typeof ParentIndexRoute
   ResultsIndexRoute: typeof ResultsIndexRoute
   StudentsIndexRoute: typeof StudentsIndexRoute
+  TeacherIndexRoute: typeof TeacherIndexRoute
   TeachersIndexRoute: typeof TeachersIndexRoute
+  TeacherClassClassIdRoute: typeof TeacherClassClassIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -271,6 +401,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admissions': {
+      id: '/admissions'
+      path: '/admissions'
+      fullPath: '/admissions'
+      preLoaderRoute: typeof AdmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/attendance': {
@@ -306,6 +443,13 @@ declare module '@tanstack/react-router' {
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academics/lessons': {
@@ -350,6 +494,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClassesClassIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/parent/': {
+      id: '/parent/'
+      path: '/parent'
+      fullPath: '/parent/'
+      preLoaderRoute: typeof ParentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/attendance': {
+      id: '/parent/attendance'
+      path: '/parent/attendance'
+      fullPath: '/parent/attendance'
+      preLoaderRoute: typeof ParentAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/messages': {
+      id: '/parent/messages'
+      path: '/parent/messages'
+      fullPath: '/parent/messages'
+      preLoaderRoute: typeof ParentMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/reports': {
+      id: '/parent/reports'
+      path: '/parent/reports'
+      fullPath: '/parent/reports'
+      preLoaderRoute: typeof ParentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent/results': {
+      id: '/parent/results'
+      path: '/parent/results'
+      fullPath: '/parent/results'
+      preLoaderRoute: typeof ParentResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/results/': {
       id: '/results/'
       path: '/results'
@@ -378,6 +557,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentsStudentIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teacher/': {
+      id: '/teacher/'
+      path: '/teacher'
+      fullPath: '/teacher/'
+      preLoaderRoute: typeof TeacherIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teacher/classes': {
+      id: '/teacher/classes'
+      path: '/teacher/classes'
+      fullPath: '/teacher/classes'
+      preLoaderRoute: typeof TeacherClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/teachers/': {
       id: '/teachers/'
       path: '/teachers'
@@ -392,28 +585,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeachersTeacherIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/teacher/class/$classId': {
+      id: '/teacher/class/$classId'
+      path: '/teacher/class/$classId'
+      fullPath: '/teacher/class/$classId'
+      preLoaderRoute: typeof TeacherClassClassIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdmissionsRoute: AdmissionsRoute,
   AttendanceRoute: AttendanceRoute,
   CommunicationRoute: CommunicationRoute,
   ImportRoute: ImportRoute,
   OnboardingRoute: OnboardingRoute,
   ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
   AcademicsLessonsRoute: AcademicsLessonsRoute,
   AcademicsSubjectsRoute: AcademicsSubjectsRoute,
   AcademicsSyllabusRoute: AcademicsSyllabusRoute,
   AcademicsTimetableRoute: AcademicsTimetableRoute,
   ClassesClassIdRoute: ClassesClassIdRoute,
+  ParentAttendanceRoute: ParentAttendanceRoute,
+  ParentMessagesRoute: ParentMessagesRoute,
+  ParentReportsRoute: ParentReportsRoute,
+  ParentResultsRoute: ParentResultsRoute,
   ResultsBatchIdRoute: ResultsBatchIdRoute,
   StudentsStudentIdRoute: StudentsStudentIdRoute,
+  TeacherClassesRoute: TeacherClassesRoute,
   TeachersTeacherIdRoute: TeachersTeacherIdRoute,
   ClassesIndexRoute: ClassesIndexRoute,
+  ParentIndexRoute: ParentIndexRoute,
   ResultsIndexRoute: ResultsIndexRoute,
   StudentsIndexRoute: StudentsIndexRoute,
+  TeacherIndexRoute: TeacherIndexRoute,
   TeachersIndexRoute: TeachersIndexRoute,
+  TeacherClassClassIdRoute: TeacherClassClassIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
