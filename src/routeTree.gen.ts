@@ -28,6 +28,12 @@ import { Route as ParentAttendanceRouteImport } from './routes/parent.attendance
 import { Route as ParentMessagesRouteImport } from './routes/parent.messages'
 import { Route as ParentReportsRouteImport } from './routes/parent.reports'
 import { Route as ParentResultsRouteImport } from './routes/parent.results'
+import { Route as PlatformIndexRouteImport } from './routes/platform.index'
+import { Route as PlatformAnalyticsRouteImport } from './routes/platform.analytics'
+import { Route as PlatformDomainsRouteImport } from './routes/platform.domains'
+import { Route as PlatformFeaturesRouteImport } from './routes/platform.features'
+import { Route as PlatformSchoolsRouteImport } from './routes/platform.schools'
+import { Route as PlatformSubscriptionsRouteImport } from './routes/platform.subscriptions'
 import { Route as ResultsIndexRouteImport } from './routes/results.index'
 import { Route as ResultsBatchIdRouteImport } from './routes/results.$batchId'
 import { Route as StudentsIndexRouteImport } from './routes/students.index'
@@ -133,6 +139,36 @@ const ParentResultsRoute = ParentResultsRouteImport.update({
   path: '/parent/results',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlatformIndexRoute = PlatformIndexRouteImport.update({
+  id: '/platform/',
+  path: '/platform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformAnalyticsRoute = PlatformAnalyticsRouteImport.update({
+  id: '/platform/analytics',
+  path: '/platform/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformDomainsRoute = PlatformDomainsRouteImport.update({
+  id: '/platform/domains',
+  path: '/platform/domains',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformFeaturesRoute = PlatformFeaturesRouteImport.update({
+  id: '/platform/features',
+  path: '/platform/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformSchoolsRoute = PlatformSchoolsRouteImport.update({
+  id: '/platform/schools',
+  path: '/platform/schools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformSubscriptionsRoute = PlatformSubscriptionsRouteImport.update({
+  id: '/platform/subscriptions',
+  path: '/platform/subscriptions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultsIndexRoute = ResultsIndexRouteImport.update({
   id: '/results/',
   path: '/results/',
@@ -197,12 +233,18 @@ export interface FileRoutesByFullPath {
   '/parent/messages': typeof ParentMessagesRoute
   '/parent/reports': typeof ParentReportsRoute
   '/parent/results': typeof ParentResultsRoute
+  '/platform/analytics': typeof PlatformAnalyticsRoute
+  '/platform/domains': typeof PlatformDomainsRoute
+  '/platform/features': typeof PlatformFeaturesRoute
+  '/platform/schools': typeof PlatformSchoolsRoute
+  '/platform/subscriptions': typeof PlatformSubscriptionsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
   '/parent/': typeof ParentIndexRoute
+  '/platform/': typeof PlatformIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -227,12 +269,18 @@ export interface FileRoutesByTo {
   '/parent/messages': typeof ParentMessagesRoute
   '/parent/reports': typeof ParentReportsRoute
   '/parent/results': typeof ParentResultsRoute
+  '/platform/analytics': typeof PlatformAnalyticsRoute
+  '/platform/domains': typeof PlatformDomainsRoute
+  '/platform/features': typeof PlatformFeaturesRoute
+  '/platform/schools': typeof PlatformSchoolsRoute
+  '/platform/subscriptions': typeof PlatformSubscriptionsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes': typeof ClassesIndexRoute
   '/parent': typeof ParentIndexRoute
+  '/platform': typeof PlatformIndexRoute
   '/results': typeof ResultsIndexRoute
   '/students': typeof StudentsIndexRoute
   '/teacher': typeof TeacherIndexRoute
@@ -258,12 +306,18 @@ export interface FileRoutesById {
   '/parent/messages': typeof ParentMessagesRoute
   '/parent/reports': typeof ParentReportsRoute
   '/parent/results': typeof ParentResultsRoute
+  '/platform/analytics': typeof PlatformAnalyticsRoute
+  '/platform/domains': typeof PlatformDomainsRoute
+  '/platform/features': typeof PlatformFeaturesRoute
+  '/platform/schools': typeof PlatformSchoolsRoute
+  '/platform/subscriptions': typeof PlatformSubscriptionsRoute
   '/results/$batchId': typeof ResultsBatchIdRoute
   '/students/$studentId': typeof StudentsStudentIdRoute
   '/teacher/classes': typeof TeacherClassesRoute
   '/teachers/$teacherId': typeof TeachersTeacherIdRoute
   '/classes/': typeof ClassesIndexRoute
   '/parent/': typeof ParentIndexRoute
+  '/platform/': typeof PlatformIndexRoute
   '/results/': typeof ResultsIndexRoute
   '/students/': typeof StudentsIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -290,12 +344,18 @@ export interface FileRouteTypes {
     | '/parent/messages'
     | '/parent/reports'
     | '/parent/results'
+    | '/platform/analytics'
+    | '/platform/domains'
+    | '/platform/features'
+    | '/platform/schools'
+    | '/platform/subscriptions'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
     | '/parent/'
+    | '/platform/'
     | '/results/'
     | '/students/'
     | '/teacher/'
@@ -320,12 +380,18 @@ export interface FileRouteTypes {
     | '/parent/messages'
     | '/parent/reports'
     | '/parent/results'
+    | '/platform/analytics'
+    | '/platform/domains'
+    | '/platform/features'
+    | '/platform/schools'
+    | '/platform/subscriptions'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes'
     | '/parent'
+    | '/platform'
     | '/results'
     | '/students'
     | '/teacher'
@@ -350,12 +416,18 @@ export interface FileRouteTypes {
     | '/parent/messages'
     | '/parent/reports'
     | '/parent/results'
+    | '/platform/analytics'
+    | '/platform/domains'
+    | '/platform/features'
+    | '/platform/schools'
+    | '/platform/subscriptions'
     | '/results/$batchId'
     | '/students/$studentId'
     | '/teacher/classes'
     | '/teachers/$teacherId'
     | '/classes/'
     | '/parent/'
+    | '/platform/'
     | '/results/'
     | '/students/'
     | '/teacher/'
@@ -381,12 +453,18 @@ export interface RootRouteChildren {
   ParentMessagesRoute: typeof ParentMessagesRoute
   ParentReportsRoute: typeof ParentReportsRoute
   ParentResultsRoute: typeof ParentResultsRoute
+  PlatformAnalyticsRoute: typeof PlatformAnalyticsRoute
+  PlatformDomainsRoute: typeof PlatformDomainsRoute
+  PlatformFeaturesRoute: typeof PlatformFeaturesRoute
+  PlatformSchoolsRoute: typeof PlatformSchoolsRoute
+  PlatformSubscriptionsRoute: typeof PlatformSubscriptionsRoute
   ResultsBatchIdRoute: typeof ResultsBatchIdRoute
   StudentsStudentIdRoute: typeof StudentsStudentIdRoute
   TeacherClassesRoute: typeof TeacherClassesRoute
   TeachersTeacherIdRoute: typeof TeachersTeacherIdRoute
   ClassesIndexRoute: typeof ClassesIndexRoute
   ParentIndexRoute: typeof ParentIndexRoute
+  PlatformIndexRoute: typeof PlatformIndexRoute
   ResultsIndexRoute: typeof ResultsIndexRoute
   StudentsIndexRoute: typeof StudentsIndexRoute
   TeacherIndexRoute: typeof TeacherIndexRoute
@@ -529,6 +607,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParentResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/platform/': {
+      id: '/platform/'
+      path: '/platform'
+      fullPath: '/platform/'
+      preLoaderRoute: typeof PlatformIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/analytics': {
+      id: '/platform/analytics'
+      path: '/platform/analytics'
+      fullPath: '/platform/analytics'
+      preLoaderRoute: typeof PlatformAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/domains': {
+      id: '/platform/domains'
+      path: '/platform/domains'
+      fullPath: '/platform/domains'
+      preLoaderRoute: typeof PlatformDomainsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/features': {
+      id: '/platform/features'
+      path: '/platform/features'
+      fullPath: '/platform/features'
+      preLoaderRoute: typeof PlatformFeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/schools': {
+      id: '/platform/schools'
+      path: '/platform/schools'
+      fullPath: '/platform/schools'
+      preLoaderRoute: typeof PlatformSchoolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform/subscriptions': {
+      id: '/platform/subscriptions'
+      path: '/platform/subscriptions'
+      fullPath: '/platform/subscriptions'
+      preLoaderRoute: typeof PlatformSubscriptionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/results/': {
       id: '/results/'
       path: '/results'
@@ -613,12 +733,18 @@ const rootRouteChildren: RootRouteChildren = {
   ParentMessagesRoute: ParentMessagesRoute,
   ParentReportsRoute: ParentReportsRoute,
   ParentResultsRoute: ParentResultsRoute,
+  PlatformAnalyticsRoute: PlatformAnalyticsRoute,
+  PlatformDomainsRoute: PlatformDomainsRoute,
+  PlatformFeaturesRoute: PlatformFeaturesRoute,
+  PlatformSchoolsRoute: PlatformSchoolsRoute,
+  PlatformSubscriptionsRoute: PlatformSubscriptionsRoute,
   ResultsBatchIdRoute: ResultsBatchIdRoute,
   StudentsStudentIdRoute: StudentsStudentIdRoute,
   TeacherClassesRoute: TeacherClassesRoute,
   TeachersTeacherIdRoute: TeachersTeacherIdRoute,
   ClassesIndexRoute: ClassesIndexRoute,
   ParentIndexRoute: ParentIndexRoute,
+  PlatformIndexRoute: PlatformIndexRoute,
   ResultsIndexRoute: ResultsIndexRoute,
   StudentsIndexRoute: StudentsIndexRoute,
   TeacherIndexRoute: TeacherIndexRoute,

@@ -74,7 +74,10 @@ function TeacherClassDetail() {
             </div>
             <ActionButton
               onClick={() => {
-                if (!topic.trim()) return toast.error("Add the topic you taught");
+                if (!topic.trim()) {
+                  toast.error("Add the topic you taught");
+                  return;
+                }
                 toast.success("Lesson logged", { description: `${topic.trim()} · ${cls.name}` });
                 setTopic("");
               }}

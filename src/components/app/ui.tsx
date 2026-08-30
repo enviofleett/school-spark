@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { createElement, type ComponentType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { requiredPlanFor, type FeatureId } from "@/lib/entitlements";
 import { useApp } from "@/lib/app-state";
@@ -73,8 +73,8 @@ export function Row({
 }) {
   const content = <div className={cn("flex items-center gap-3 p-3.5", className)}>{children}</div>;
   if (!linkProps) return content;
-  const AnyLink = Link as unknown as (props: Record<string, unknown>) => ReactNode;
-  return AnyLink({ ...linkProps, className: "block transition-colors hover:bg-foreground/[0.04]", children: content });
+  const AnyLink = Link as unknown as ComponentType<Record<string, unknown>>;
+  return createElement(AnyLink, { ...linkProps, className: "block transition-colors hover:bg-foreground/[0.04]", children: content });
 }
 
 export function Avatar({ name, tone = "clay", size = 36 }: { name: string; tone?: "clay" | "moss" | "amber" | "mist"; size?: number }) {

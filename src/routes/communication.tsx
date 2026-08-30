@@ -122,7 +122,10 @@ function ComposeDialog() {
           <ActionButton
             variant="outline"
             onClick={() => {
-              if (!subject.trim()) return toast.error("Add a subject before saving");
+              if (!subject.trim()) {
+                toast.error("Add a subject before saving");
+                return;
+              }
               addMessage({ from: currentUserName, fromRole: "School Administrator", audience, channel, subject: subject.trim(), body: body.trim(), time: "Saved just now", state: "draft", delivered: 0, read: 0 });
               setOpen(false);
               toast("Draft saved");
@@ -132,7 +135,10 @@ function ComposeDialog() {
           </ActionButton>
           <ActionButton
             onClick={() => {
-              if (!subject.trim() || !body.trim()) return toast.error("Subject and message are both required");
+              if (!subject.trim() || !body.trim()) {
+                toast.error("Subject and message are both required");
+                return;
+              }
               addMessage({ from: currentUserName, fromRole: "School Administrator", audience, channel, subject: subject.trim(), body: body.trim(), time: "Just now", state: "sent", delivered: 412, read: 0 });
               setSubject("");
               setBody("");

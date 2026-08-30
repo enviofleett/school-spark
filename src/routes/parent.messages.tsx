@@ -48,7 +48,10 @@ function ParentMessages() {
         <Textarea rows={4} value={reply} maxLength={1000} onChange={(e) => setReply(e.target.value)} placeholder="Write a message…" />
         <ActionButton
           onClick={() => {
-            if (!reply.trim()) return toast.error("Write something first");
+            if (!reply.trim()) {
+              toast.error("Write something first");
+              return;
+            }
             addMessage({ from: currentUserName, fromRole: "Parent", audience: "School office", channel: "In-app", subject: "Reply from guardian", body: reply.trim(), time: "Just now", state: "sent", delivered: 1, read: 0 });
             setReply("");
             toast.success("Message sent to the school office");

@@ -96,8 +96,14 @@ function OnboardingPage() {
         {step > 0 ? <ActionButton variant="outline" onClick={() => setStep(step - 1)}>Back</ActionButton> : null}
         <ActionButton
           onClick={() => {
-            if (step === 0 && !name.trim()) return toast.error("Your school needs a name");
-            if (step < 3) return setStep(step + 1);
+            if (step === 0 && !name.trim()) {
+              toast.error("Your school needs a name");
+              return;
+            }
+            if (step < 3) {
+              setStep(step + 1);
+              return;
+            }
             toast.success("School set up", { description: `${name} is on the ${plan} plan.` });
             router.navigate({ to: "/" });
           }}

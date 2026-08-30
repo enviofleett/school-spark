@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useMemo, useState, type ReactNode } from "react";
+import { createElement, useMemo, useState, type ComponentType, type ReactNode } from "react";
 import {
   Bell,
   ChevronDown,
@@ -27,10 +27,10 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-const AnyLink = Link as unknown as (props: Record<string, unknown>) => ReactNode;
+const AnyLink = Link as unknown as ComponentType<Record<string, unknown>>;
 
 function NavLink({ to, label, active }: { to: string; label: string; active: boolean }) {
-  return AnyLink({
+  return createElement(AnyLink, {
     to,
     className: cn(
       "shrink-0 rounded-full px-3 py-1.5 text-[13px] transition-colors",
@@ -85,7 +85,7 @@ function GlobalSearch() {
                 <div>
                   <p className="label-mono px-2 py-1">Students</p>
                   {results.students.map((s) =>
-                    AnyLink({
+                    createElement(AnyLink, {
                       key: s.id,
                       to: "/students/$studentId",
                       params: { studentId: s.id },
@@ -107,7 +107,7 @@ function GlobalSearch() {
                 <div>
                   <p className="label-mono px-2 py-1">Teachers</p>
                   {results.teachers.map((t) =>
-                    AnyLink({
+                    createElement(AnyLink, {
                       key: t.id,
                       to: "/teachers/$teacherId",
                       params: { teacherId: t.id },
@@ -215,7 +215,7 @@ function ProfileMenu() {
         <DropdownMenuLabel className="label-mono">Switch experience</DropdownMenuLabel>
         {roles.map((r) => (
           <DropdownMenuItem key={r} asChild>
-            {AnyLink({
+            {createElement(AnyLink, {
               to: ROLE_HOME[r],
               onClick: () => setRole(r),
               className: cn("flex w-full items-center justify-between", r === role && "font-medium"),
@@ -229,8 +229,8 @@ function ProfileMenu() {
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>{AnyLink({ to: "/settings", children: "School settings" })}</DropdownMenuItem>
-        <DropdownMenuItem asChild>{AnyLink({ to: "/onboarding", children: "Setup checklist" })}</DropdownMenuItem>
+        <DropdownMenuItem asChild>{createElement(AnyLink, { to: "/settings", children: "School settings" })}</DropdownMenuItem>
+        <DropdownMenuItem asChild>{createElement(AnyLink, { to: "/onboarding", children: "Setup checklist" })}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -248,7 +248,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <header className="sticky top-0 z-40 bg-panel text-panel-foreground">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 pt-4 pb-1 lg:px-6">
-          {AnyLink({
+          {createElement(AnyLink, {
             to: ROLE_HOME[role],
             className: "flex items-center gap-2.5",
             children: (
@@ -280,14 +280,14 @@ export function AppShell({ children }: { children: ReactNode }) {
                       .filter((c) => !c.feature || has(c.feature))
                       .map((c) => (
                         <DropdownMenuItem key={c.to} asChild>
-                          {AnyLink({ to: c.to, children: c.label })}
+                          {createElement(AnyLink, { to: c.to, children: c.label })}
                         </DropdownMenuItem>
                       ))}
                     {item.children
                       .filter((c) => c.feature && !has(c.feature))
                       .map((c) => (
                         <DropdownMenuItem key={c.to} asChild>
-                          {AnyLink({
+                          {createElement(AnyLink, {
                             to: "/settings",
                             className: "flex w-full items-center justify-between text-muted-foreground",
                             children: (
@@ -328,7 +328,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                   </SheetHeader>
                   <div className="grid gap-1 px-4 pb-8">
                     {item.children.map((c) =>
-                      AnyLink({
+                      createElement(AnyLink, {
                         key: c.to,
                         to: c.feature && !has(c.feature) ? "/settings" : c.to,
                         className: "flex items-center justify-between rounded-lg px-3 py-3 text-sm hover:bg-muted",
@@ -357,7 +357,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {tabs.map((tab, i) => {
             const Icon = TAB_ICONS[i] ?? Settings2;
             const active = pathname === tab.to;
-            return AnyLink({
+            return createElement(AnyLink, {
               key: tab.to + tab.label,
               to: tab.to,
               className: cn("flex flex-col items-center gap-1 py-2.5", active ? "text-clay" : "text-panel-foreground/60"),
