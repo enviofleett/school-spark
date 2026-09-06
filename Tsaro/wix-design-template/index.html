@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tsaro Global Defence</title>
+    <title>Apexion Consulting</title>
     <!-- Using Inter font to match the clean corporate look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Variables (Original Apexion Design Theme) */
+        /* CSS Reset & Variables */
         :root {
             --navy: #0A192F;
             --navy-light: #112240;
@@ -56,7 +56,7 @@
         }
 
         .logo-icon {
-            color: var(--accent-red, #E62020); /* Kept a hint of red for the Tsaro wolf */
+            color: var(--blue);
             font-size: 28px;
         }
 
@@ -79,7 +79,7 @@
         }
 
         .btn-primary {
-            background-color: var(--navy);
+            background-color: var(--blue);
             color: white;
             padding: 12px 28px;
             border-radius: 50px;
@@ -93,7 +93,7 @@
         }
 
         .btn-primary:hover {
-            background-color: var(--blue);
+            background-color: var(--navy);
         }
 
         /* --- Hero Section --- */
@@ -106,7 +106,7 @@
         .hero h1 {
             font-size: 56px;
             color: var(--navy);
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto 24px;
             line-height: 1.1;
             font-weight: 700;
@@ -115,7 +115,7 @@
         .hero p {
             font-size: 18px;
             color: var(--text-light);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 48px;
         }
 
@@ -145,19 +145,43 @@
         .stats-box {
             background: white;
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: space-between;
             padding: 32px 64px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            width: 90%;
-            max-width: 1000px;
+            width: 80%;
+            max-width: 900px;
         }
 
-        .client-logo {
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-number {
             font-size: 32px;
-            opacity: 0.8;
-            filter: grayscale(100%);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            background: #EFF6FF;
+            color: var(--blue);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
         }
 
         /* --- Services Icons Row --- */
@@ -171,8 +195,6 @@
 
         .service-icon-item {
             text-align: center;
-            flex: 1;
-            padding: 0 10px;
         }
 
         .service-icon {
@@ -193,12 +215,8 @@
             font-weight: 600;
             font-size: 15px;
             color: var(--navy);
-            margin: 0 auto 8px;
-        }
-
-        .service-icon-item span {
-            font-size: 12px;
-            color: var(--text-light);
+            max-width: 100px;
+            margin: 0 auto;
         }
 
         /* --- Dark Section (About Us) --- */
@@ -217,7 +235,7 @@
 
         .dark-header h2 {
             font-size: 42px;
-            max-width: 600px;
+            max-width: 500px;
             line-height: 1.2;
         }
 
@@ -269,7 +287,12 @@
         }
 
         .about-card h3 {
-            font-size: 24px;
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .about-card h4 {
+            font-size: 20px;
             margin-bottom: 16px;
             color: white;
         }
@@ -278,7 +301,6 @@
             color: #94A3B8;
             margin-bottom: 32px;
             font-size: 15px;
-            font-style: italic;
         }
 
         .card-list {
@@ -294,6 +316,20 @@
             color: #E2E8F0;
             font-weight: 500;
             font-size: 14px;
+        }
+
+        .satisfaction-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.05);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .satisfaction-icon {
+            font-size: 24px;
+            color: var(--blue-light);
         }
 
         /* --- Footer Impact Section --- */
@@ -312,7 +348,7 @@
 
         .impact-section p {
             color: #94A3B8;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -323,64 +359,80 @@
     <!-- Header -->
     <header class="container">
         <div class="logo">
-            <span class="logo-icon">🐺</span> tsaro <span style="font-weight: 400; font-size: 14px; margin-left: 4px; color: var(--text-light)">GLOBAL DEFENCE</span>
+            <span class="logo-icon">▲</span> Apexion <span style="font-weight: 400; font-size: 14px; margin-left: 4px; color: var(--text-light)">CONSULTING</span>
         </div>
         <nav>
             <a href="#">Home</a>
             <a href="#">About Us</a>
-            <a href="#">Products & Services</a>
-            <a href="#">Academy</a>
-            <a href="#">Clientele</a>
+            <a href="#">Services</a>
+            <a href="#">Case Studies</a>
         </nav>
         <div class="header-actions">
             <a href="#" style="color: var(--navy); text-decoration: none; font-weight: 600; font-size: 15px;">Contact Us</a>
-            <a href="#" class="btn-primary">Download Brief &rarr;</a>
+            <a href="#" class="btn-primary">Book a Consultation &rarr;</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Next-Generation Defense for a Complex World.</h1>
-            <p>We architect and deploy elite security infrastructure, tactical intelligence, and defense hardware for governments and enterprise organizations across the globe.</p>
+            <h1>Strategic Solutions That Drive Your Success</h1>
+            <p>We help businesses overcome challenges, optimize operations, and achieve sustainable growth.</p>
             <div class="hero-visual">
-                <img src="https://images.unsplash.com/photo-1506509618035-7798782f9d3b?auto=format&fit=crop&w=1200&q=80" alt="Tactical Defense" class="hero-img">
+                <!-- Placeholder for the meeting image -->
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Business Meeting" class="hero-img">
             </div>
         </div>
     </section>
 
-    <!-- Floating Stats Box (Using Logos to match Apexion layout but Tsaro content) -->
+    <!-- Floating Stats Box -->
     <div class="container stats-wrapper">
         <div class="stats-box">
-            <div class="client-logo">🦅</div>
-            <div class="client-logo">⚖️</div>
-            <div class="client-logo">🏛️</div>
-            <div class="client-logo">🛡️</div>
-            <div class="client-logo">⭐</div>
+            <div class="stat-item">
+                <div class="stat-icon">👥</div>
+                <div>
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">💼</div>
+                <div>
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🏆</div>
+                <div>
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Industry Awards</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Services Icons Row (Matching Apexion structure) -->
+    <!-- Services Icons -->
     <section class="container services-row">
         <div class="service-icon-item">
             <div class="service-icon">🛡️</div>
-            <p>Infrastructure & Hardware</p>
-            <span>State-of-the-art systems</span>
+            <p>Business Strategy</p>
+        </div>
+        <div class="service-icon-item">
+            <div class="service-icon">📢</div>
+            <p>Market Research</p>
         </div>
         <div class="service-icon-item">
             <div class="service-icon">📊</div>
-            <p>Tactical Intelligence</p>
-            <span>Data-driven profiling</span>
+            <p>Operational Excellence</p>
         </div>
         <div class="service-icon-item">
-            <div class="service-icon">🎓</div>
-            <p>Tsaro Academy</p>
-            <span>Advanced methodology</span>
+            <div class="service-icon">💡</div>
+            <p>Financial Advisory</p>
         </div>
         <div class="service-icon-item">
             <div class="service-icon">🎯</div>
-            <p>Strategic Advisory</p>
-            <span>Elite consultancy</span>
+            <p>Change Management</p>
         </div>
     </section>
 
@@ -388,26 +440,35 @@
     <section class="dark-section">
         <div class="container">
             <div class="dark-header">
-                <h2>Assessing the economic road map of the current administration.</h2>
+                <h2>Your Trusted Partner in Business Growth</h2>
                 <div class="dark-header-content">
-                    <p>Its simplification on Nigeria's national security and operational demands.</p>
-                    <a href="#">DOWNLOAD POLICY BRIEF &rarr;</a>
+                    <p>We partner with forward-thinking organizations to deliver measurable results and long-term impact.</p>
+                    <a href="#">LET'S BUILD YOUR SUCCESS &rarr;</a>
                 </div>
             </div>
 
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1595590424283-b8f1784cb2c8?auto=format&fit=crop&w=800&q=80" alt="Consultants working">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Consultants working">
                 </div>
                 <div class="about-card">
-                    <h3>Our Latest Policy Brief</h3>
-                    <p>"With a team of experts on latest security technologies, we offer tailored solutions that align with the specific needs and operational demands of Nigeria's security architecture."</p>
+                    <h3>200+</h3>
+                    <h4>Business Consultants</h4>
+                    <p>Our team of experienced consultants brings deep industry knowledge and innovative solutions to every challenge.</p>
                     
                     <ul class="card-list">
-                        <li>SECURITY TECHNOLOGIES <span>&rarr;</span></li>
+                        <li>DATA-DRIVEN INSIGHTS <span>&rarr;</span></li>
                         <li>TAILORED SOLUTIONS <span>&rarr;</span></li>
-                        <li>OPERATIONAL DEMANDS <span>&rarr;</span></li>
+                        <li>PROVEN RESULTS <span>&rarr;</span></li>
                     </ul>
+
+                    <div class="satisfaction-box">
+                        <div class="satisfaction-icon">📈</div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 15px;">95% Client Satisfaction</div>
+                            <div style="font-size: 12px; color: #94A3B8;">We are committed to delivering excellence in every engagement.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -416,8 +477,8 @@
     <!-- Impact Section -->
     <section class="impact-section">
         <div class="container">
-            <h2>Bridging the gap with effective security solutions.</h2>
-            <p>Amidst growing insecurity, Tsaro Global Defence offers superior protection for families, businesses, and assets, ensuring peace of mind in an uncertain world.</p>
+            <h2>Empowering Organizations<br>to Reach Their Full Potential</h2>
+            <p>We deliver actionable strategies and practical solutions that empower businesses to thrive in a competitive world.</p>
         </div>
     </section>
 
