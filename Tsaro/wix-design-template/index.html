@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apexion Consulting</title>
-    <!-- Using Inter font to match the clean corporate look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tsaro Global Defence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Variables */
+        /* Dark Mode Variables */
         :root {
-            --navy: #0A192F;
-            --navy-light: #112240;
-            --blue: #2563EB;
-            --blue-light: #3B82F6;
-            --gray-bg: #F8FAFC;
-            --text-main: #334155;
-            --text-light: #64748B;
+            --bg-main: #121212;
+            --bg-secondary: #1A1A1A;
+            --bg-card: #242424;
+            --text-main: #FFFFFF;
+            --text-light: #A3A3A3;
+            --accent-orange: #FF5500;
+            --accent-red: #E62020;
+            --border-color: #333333;
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background-color: #FFFFFF;
+            background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
         }
@@ -43,313 +43,317 @@
             justify-content: space-between;
             align-items: center;
             padding: 24px 0;
-            background: white;
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
             font-size: 24px;
-            font-weight: 700;
-            color: var(--navy);
+            font-weight: 800;
+            color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            letter-spacing: -0.5px;
         }
 
         .logo-icon {
-            color: var(--blue);
             font-size: 28px;
         }
 
         nav {
             display: flex;
-            gap: 32px;
+            gap: 28px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--navy);
+            color: var(--text-light);
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
+            transition: color 0.3s ease;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 24px;
+        nav a:hover, nav a.active {
+            color: var(--text-main);
         }
 
-        .btn-primary {
-            background-color: var(--blue);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease;
+        .header-search {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 4px;
+            color: var(--text-main);
+            font-size: 14px;
+            width: 200px;
         }
 
-        .btn-primary:hover {
-            background-color: var(--navy);
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero Section (Apexion Structure, Tsaro Content) --- */
         .hero {
             text-align: center;
-            padding: 80px 0 0;
-            background-color: var(--gray-bg);
+            padding: 100px 0 0;
+            background-color: var(--bg-main);
         }
 
         .hero h1 {
-            font-size: 56px;
-            color: var(--navy);
-            max-width: 800px;
+            font-size: 64px;
+            color: var(--text-main);
+            max-width: 900px;
             margin: 0 auto 24px;
             line-height: 1.1;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--text-light);
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto 48px;
         }
 
         .hero-visual {
             position: relative;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .hero-img {
             width: 100%;
-            height: 500px;
+            height: 550px;
             object-fit: cover;
             border-radius: 24px 24px 0 0;
             display: block;
+            opacity: 0.9;
         }
 
-        /* --- Floating Stats Box --- */
+        /* --- Floating Logos Box (Replacing Stats Box) --- */
         .stats-wrapper {
             position: relative;
-            margin-top: -60px;
+            margin-top: -50px;
             z-index: 10;
             display: flex;
             justify-content: center;
         }
 
         .stats-box {
-            background: white;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             display: flex;
-            justify-content: space-between;
-            padding: 32px 64px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            width: 80%;
-            max-width: 900px;
-        }
-
-        .stat-item {
-            display: flex;
+            justify-content: space-around;
             align-items: center;
-            gap: 16px;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--navy);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .stat-icon {
-            background: #EFF6FF;
-            color: var(--blue);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        /* --- Services Icons Row --- */
-        .services-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 80px 0;
+            padding: 32px 48px;
+            border-radius: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            width: 90%;
             max-width: 1000px;
-            margin: 0 auto;
         }
 
-        .service-icon-item {
-            text-align: center;
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: white;
-            border: 2px solid #E2E8F0;
+        .client-logo {
+            width: 60px;
+            height: 60px;
+            background: #2A2A2A;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            color: var(--blue);
             font-size: 24px;
+            border: 2px solid #444;
         }
 
-        .service-icon-item p {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--navy);
-            max-width: 100px;
-            margin: 0 auto;
-        }
-
-        /* --- Dark Section (About Us) --- */
-        .dark-section {
-            background-color: var(--navy);
-            color: white;
+        /* --- Services Grid --- */
+        .services-section {
             padding: 100px 0;
+            background: var(--bg-main);
         }
 
-        .dark-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 64px;
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 40px;
+            font-weight: 700;
         }
 
-        .dark-header h2 {
-            font-size: 42px;
-            max-width: 500px;
-            line-height: 1.2;
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
         }
 
-        .dark-header-content {
-            max-width: 400px;
-        }
-
-        .dark-header-content p {
-            color: #94A3B8;
-            margin-bottom: 16px;
-        }
-
-        .dark-header-content a {
-            color: var(--blue-light);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-        }
-
-        .about-image {
-            flex: 1.2;
-            border-radius: 20px;
+        .service-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
             overflow: hidden;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .about-card {
-            flex: 1;
-            background-color: var(--navy-light);
-            padding: 48px;
-            border-radius: 20px;
-            border: 1px solid #1E293B;
-            margin-left: -80px; /* Overlap effect */
-            z-index: 10;
-        }
-
-        .about-card h3 {
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
-
-        .about-card h4 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: white;
-        }
-
-        .about-card p {
-            color: #94A3B8;
-            margin-bottom: 32px;
-            font-size: 15px;
-        }
-
-        .card-list {
-            list-style: none;
-            margin-bottom: 32px;
-        }
-
-        .card-list li {
             display: flex;
-            justify-content: space-between;
-            padding: 16px 0;
-            border-bottom: 1px solid #1E293B;
-            color: #E2E8F0;
+            height: 280px;
+        }
+
+        .service-img {
+            width: 45%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 40px 32px;
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-content p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--accent-orange);
+            background: transparent;
+            color: var(--text-main);
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 500;
             font-size: 14px;
+            display: inline-block;
+            width: fit-content;
+            transition: all 0.3s ease;
         }
 
-        .satisfaction-box {
+        .btn-outline:hover {
+            background: var(--accent-orange);
+        }
+
+        /* --- Dark Section (Policy Brief & Quote) --- */
+        .dark-section {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .dark-section h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .dark-section p {
+            color: var(--text-light);
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        blockquote {
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-main);
+            max-width: 900px;
+            margin: 80px auto 0;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-main);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 20px;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-red);
+            font-size: 16px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul a, .footer-col p {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--text-main);
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .subscribe-form input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--text-light);
+            padding: 12px 0;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn-subscribe {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            color: black;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.05);
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-        .satisfaction-icon {
-            font-size: 24px;
-            color: var(--blue-light);
-        }
-
-        /* --- Footer Impact Section --- */
-        .impact-section {
-            background-color: var(--navy);
-            text-align: center;
-            padding: 60px 0 100px;
-            border-top: 1px solid #1E293B;
-        }
-
-        .impact-section h2 {
-            color: white;
-            font-size: 36px;
-            margin-bottom: 16px;
-        }
-
-        .impact-section p {
-            color: #94A3B8;
-            max-width: 600px;
-            margin: 0 auto;
+            justify-content: center;
+            font-weight: bold;
+            text-decoration: none;
         }
 
     </style>
@@ -357,130 +361,159 @@
 <body>
 
     <!-- Header -->
-    <header class="container">
-        <div class="logo">
-            <span class="logo-icon">▲</span> Apexion <span style="font-weight: 400; font-size: 14px; margin-left: 4px; color: var(--text-light)">CONSULTING</span>
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Case Studies</a>
-        </nav>
-        <div class="header-actions">
-            <a href="#" style="color: var(--navy); text-decoration: none; font-weight: 600; font-size: 15px;">Contact Us</a>
-            <a href="#" class="btn-primary">Book a Consultation &rarr;</a>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo">
+                <span class="logo-icon">🐺</span> tsaro
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Products & Services</a>
+                <a href="#">Academy</a>
+                <a href="#">Clientele</a>
+                <a href="#">Blog</a>
+                <a href="#">More...</a>
+            </nav>
+            <div>
+                <input type="text" class="header-search" placeholder="🔍 Search...">
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Strategic Solutions That Drive Your Success</h1>
-            <p>We help businesses overcome challenges, optimize operations, and achieve sustainable growth.</p>
+            <h1>Next-Generation Defense for a Complex World.</h1>
+            <p>We architect and deploy elite security infrastructure, tactical intelligence, and defense hardware for governments and enterprise organizations across the globe.</p>
             <div class="hero-visual">
-                <!-- Placeholder for the meeting image -->
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Business Meeting" class="hero-img">
+                <!-- Military/Tactical Hero Placeholder -->
+                <img src="https://images.unsplash.com/photo-1506509618035-7798782f9d3b?auto=format&fit=crop&w=1200&q=80" alt="Tactical Defense" class="hero-img">
             </div>
         </div>
     </section>
 
-    <!-- Floating Stats Box -->
+    <!-- Floating Client Logos Box -->
     <div class="container stats-wrapper">
         <div class="stats-box">
-            <div class="stat-item">
-                <div class="stat-icon">👥</div>
-                <div>
-                    <div class="stat-number">300+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">💼</div>
-                <div>
-                    <div class="stat-number">700+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">🏆</div>
-                <div>
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Industry Awards</div>
-                </div>
-            </div>
+            <!-- Placeholders for Government/Military Seals -->
+            <div class="client-logo">🦅</div>
+            <div class="client-logo">⚖️</div>
+            <div class="client-logo">🏛️</div>
+            <div class="client-logo">🛡️</div>
+            <div class="client-logo">⭐</div>
+            <div class="client-logo">⚔️</div>
         </div>
     </div>
 
-    <!-- Services Icons -->
-    <section class="container services-row">
-        <div class="service-icon-item">
-            <div class="service-icon">🛡️</div>
-            <p>Business Strategy</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">📢</div>
-            <p>Market Research</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">📊</div>
-            <p>Operational Excellence</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">💡</div>
-            <p>Financial Advisory</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">🎯</div>
-            <p>Change Management</p>
-        </div>
-    </section>
-
-    <!-- Dark Section -->
-    <section class="dark-section">
-        <div class="container">
-            <div class="dark-header">
-                <h2>Your Trusted Partner in Business Growth</h2>
-                <div class="dark-header-content">
-                    <p>We partner with forward-thinking organizations to deliver measurable results and long-term impact.</p>
-                    <a href="#">LET'S BUILD YOUR SUCCESS &rarr;</a>
+    <!-- Services Grid (Tsaro Content mapped to Apexion Style) -->
+    <section class="services-section container">
+        <h2 class="services-header">Our Services</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1595590424283-b8f1784cb2c8?auto=format&fit=crop&w=500&q=80" alt="Hardware" class="service-img">
+                <div class="service-content">
+                    <h3>Security Infrastructure & Hardware</h3>
+                    <p>State-of-the-art physical and digital defense systems engineered for absolute asset protection.</p>
+                    <a href="#" class="btn-outline">Read More</a>
                 </div>
             </div>
 
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Consultants working">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1517430816045-df4b7ef11df1?auto=format&fit=crop&w=500&q=80" alt="Tactical" class="service-img">
+                <div class="service-content">
+                    <h3>Tactical Intelligence & Advisory.</h3>
+                    <p>Data-driven risk profiling, threat assessments, and elite consultancy for high-stakes environments.</p>
+                    <a href="#" class="btn-outline">Read More</a>
                 </div>
-                <div class="about-card">
-                    <h3>200+</h3>
-                    <h4>Business Consultants</h4>
-                    <p>Our team of experienced consultants brings deep industry knowledge and innovative solutions to every challenge.</p>
-                    
-                    <ul class="card-list">
-                        <li>DATA-DRIVEN INSIGHTS <span>&rarr;</span></li>
-                        <li>TAILORED SOLUTIONS <span>&rarr;</span></li>
-                        <li>PROVEN RESULTS <span>&rarr;</span></li>
-                    </ul>
+            </div>
 
-                    <div class="satisfaction-box">
-                        <div class="satisfaction-icon">📈</div>
-                        <div>
-                            <div style="font-weight: 600; font-size: 15px;">95% Client Satisfaction</div>
-                            <div style="font-size: 12px; color: #94A3B8;">We are committed to delivering excellence in every engagement.</div>
-                        </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1612011746200-c9fa733d3170?auto=format&fit=crop&w=500&q=80" alt="Academy" class="service-img">
+                <div class="service-content">
+                    <h3>Tsaro Defence Academy</h3>
+                    <p>Equipping the next generation of security personnel with advanced tactical and crisis management methodologies.</p>
+                    <a href="#" class="btn-outline">Read More</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80" alt="Service" class="service-img">
+                <div class="service-content">
+                    <h3>Service Name</h3>
+                    <p>Describe one of your services with a brief overview of the value it brings to your clients.</p>
+                    <a href="#" class="btn-outline">Read More</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Policy Brief & Quote Section -->
+    <section class="dark-section">
+        <div class="container">
+            <h2>Our Latest Policy Brief</h2>
+            <p>Assessing the economic road map of the current administration: its simplification on Nigeria's national security.</p>
+            <a href="#" class="btn-outline">Download</a>
+            
+            <blockquote>
+                "With a team of experts on latest security technologies, we offer tailored solutions that align with the specific needs and operational demands of Nigeria's security architecture."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🐺</span> tsaro
+                    </div>
+                    <p style="font-size: 10px; color: var(--text-light); letter-spacing: 1px; margin-top: 4px;">GLOBAL DEFENCE</p>
+                    <p>Amidst growing insecurity, Tsaro Global Defence offers superior protection for families, businesses, and assets. We bridge the gap with effective security solutions, ensuring peace of mind in an uncertain world.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Products & Services</a></li>
+                        <li><a href="#">Academy</a></li>
+                        <li><a href="#">Clientele</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <p style="margin-bottom: 12px;">info@tsaroglobaldefence.com</p>
+                    <p style="margin-bottom: 12px;">Tel: +234 7043419078</p>
+                    <p>Abuja<br>Nigeria</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Subscribe</h4>
+                    <div class="subscribe-form">
+                        <input type="email" placeholder="Enter your email here *">
+                        <button class="btn-subscribe">Subscribe</button>
+                    </div>
+                    
+                    <h4 style="margin-top: 40px;">Social</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">𝕏</a>
+                        <a href="#" class="social-icon">ig</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Impact Section -->
-    <section class="impact-section">
-        <div class="container">
-            <h2>Empowering Organizations<br>to Reach Their Full Potential</h2>
-            <p>We deliver actionable strategies and practical solutions that empower businesses to thrive in a competitive world.</p>
-        </div>
-    </section>
+    </footer>
 
 </body>
 </html>
