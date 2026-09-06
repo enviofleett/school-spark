@@ -171,21 +171,16 @@
 
     <!-- [SECTION 1] The Hero (Above the Fold) -->
     <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16 overflow-hidden tactical-grid">
-        <!-- Hero Tactical Background Image (Blended Seamlessly) -->
+        <!-- Hero Tactical Background Image (High Visibility & Blended) -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <img src="./hero-banner.png" alt="Tactical Operations Background" class="w-full h-full object-cover object-center opacity-35 contrast-125 filter brightness-90">
-            <!-- Multi-layer Dark Blending Gradients -->
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-obsidian/85"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-obsidian/90 via-transparent to-obsidian/90"></div>
-            <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(11, 12, 16, 0.15) 0%, rgba(11, 12, 16, 0.75) 60%, #0B0C10 95%);"></div>
+            <img src="./hero-banner.png" alt="Tactical Operations Background" class="w-full h-full object-cover object-center opacity-70 contrast-115 filter brightness-75">
+            <!-- Smooth Vignette and Edge Blending Only -->
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-obsidian/70"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 30%, rgba(11, 12, 16, 0.6) 75%, #0B0C10 100%);"></div>
         </div>
 
         <!-- Canvas Radar Simulation -->
         <canvas id="radarCanvas" class="relative z-[1]"></canvas>
-
-        <!-- Ambient Vignette & Gradient Overlays -->
-        <div class="absolute inset-0 z-[2] pointer-events-none" style="background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(11, 12, 16, 0.7) 70%, #0B0C10 100%);"></div>
-        <div class="absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-obsidian/30 to-obsidian pointer-events-none"></div>
 
         <!-- Center Aligned Content -->
         <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
