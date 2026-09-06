@@ -1,488 +1,716 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apexion Consulting</title>
-    <!-- Using Inter font to match the clean corporate look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tsaro Global Defence | Next-Generation Defense</title>
+    <meta name="description" content="We architect and deploy elite security infrastructure, tactical intelligence, and defense hardware for governments and enterprise organizations across the globe.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0B0C10',
+                        charcoal: '#1F2833',
+                        cardSurface: '#141A22',
+                        brandRed: '#E62020',
+                        brandRedHover: '#FF2A2A',
+                        textMuted: '#94A3B8',
+                        textLight: '#C5C6C7',
+                        deepGray: '#111111'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* CSS Reset & Variables */
-        :root {
-            --navy: #0A192F;
-            --navy-light: #112240;
-            --blue: #2563EB;
-            --blue-light: #3B82F6;
-            --gray-bg: #F8FAFC;
-            --text-main: #334155;
-            --text-light: #64748B;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
         body {
-            background-color: #FFFFFF;
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: #0B0C10;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* Glassmorphic Navbar */
+        .glass-header {
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
         }
 
-        /* --- Header --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 0;
-            background: white;
+        .header-hidden {
+            transform: translateY(-100%);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* Tactical Grid Background */
+        .tactical-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .logo-icon {
-            color: var(--blue);
-            font-size: 28px;
-        }
-
-        nav {
-            display: flex;
-            gap: 32px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--navy);
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .btn-primary {
-            background-color: var(--blue);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--navy);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            padding: 80px 0 0;
-            background-color: var(--gray-bg);
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            color: var(--navy);
-            max-width: 800px;
-            margin: 0 auto 24px;
-            line-height: 1.1;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto 48px;
-        }
-
-        .hero-visual {
-            position: relative;
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .hero-img {
-            width: 100%;
-            height: 540px;
-            object-fit: cover;
-            border-radius: 24px;
-            display: block;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        /* --- Floating Stats Box --- */
-        .stats-wrapper {
-            position: relative;
-            margin-top: -60px;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-        }
-
-        .stats-box {
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            padding: 32px 64px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            width: 80%;
-            max-width: 900px;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--navy);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .stat-icon {
-            background: #EFF6FF;
-            color: var(--blue);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        /* --- Services Icons Row --- */
-        .services-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 80px 0;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .service-icon-item {
-            text-align: center;
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: white;
-            border: 2px solid #E2E8F0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            color: var(--blue);
-            font-size: 24px;
-        }
-
-        .service-icon-item p {
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--navy);
-            max-width: 100px;
-            margin: 0 auto;
-        }
-
-        /* --- Dark Section (About Us) --- */
-        .dark-section {
-            background-color: var(--navy);
-            color: white;
-            padding: 100px 0;
-        }
-
-        .dark-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 64px;
-        }
-
-        .dark-header h2 {
-            font-size: 42px;
-            max-width: 500px;
-            line-height: 1.2;
-        }
-
-        .dark-header-content {
-            max-width: 400px;
-        }
-
-        .dark-header-content p {
-            color: #94A3B8;
-            margin-bottom: 16px;
-        }
-
-        .dark-header-content a {
-            color: var(--blue-light);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+        /* Interactive Card Illumination */
+        .capability-card {
+            background: #141A22;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-top: 2px solid transparent;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
 
-        .about-image {
-            flex: 1.2;
-            border-radius: 20px;
-            overflow: hidden;
+        .capability-card:hover {
+            transform: translateY(-8px);
+            border-top-color: #E62020;
+            box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 24px -4px rgba(230, 32, 32, 0.35);
         }
 
-        .about-image img {
+        /* Button Glow */
+        .btn-brand-red {
+            background-color: #E62020;
+            color: #FFFFFF;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px 0 rgba(230, 32, 32, 0.35);
+        }
+
+        .btn-brand-red:hover {
+            background-color: #FF2A2A;
+            box-shadow: 0 6px 22px 0 rgba(230, 32, 32, 0.55);
+            transform: translateY(-1px);
+        }
+
+        /* Radar Canvas */
+        #radarCanvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.35;
         }
 
-        .about-card {
-            flex: 1;
-            background-color: var(--navy-light);
-            padding: 48px;
-            border-radius: 20px;
-            border: 1px solid #1E293B;
-            margin-left: -80px; /* Overlap effect */
-            z-index: 10;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .about-card h3 {
-            font-size: 48px;
-            margin-bottom: 8px;
+        ::-webkit-scrollbar-track {
+            background: #0B0C10;
         }
-
-        .about-card h4 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: white;
+        ::-webkit-scrollbar-thumb {
+            background: #1F2833;
+            border-radius: 4px;
         }
-
-        .about-card p {
-            color: #94A3B8;
-            margin-bottom: 32px;
-            font-size: 15px;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E62020;
         }
-
-        .card-list {
-            list-style: none;
-            margin-bottom: 32px;
-        }
-
-        .card-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 16px 0;
-            border-bottom: 1px solid #1E293B;
-            color: #E2E8F0;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .satisfaction-box {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(255,255,255,0.05);
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-        .satisfaction-icon {
-            font-size: 24px;
-            color: var(--blue-light);
-        }
-
-        /* --- Footer Impact Section --- */
-        .impact-section {
-            background-color: var(--navy);
-            text-align: center;
-            padding: 60px 0 100px;
-            border-top: 1px solid #1E293B;
-        }
-
-        .impact-section h2 {
-            color: white;
-            font-size: 36px;
-            margin-bottom: 16px;
-        }
-
-        .impact-section p {
-            color: #94A3B8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
     </style>
 </head>
-<body>
+<body class="bg-obsidian text-white antialiased selection:bg-brandRed selection:text-white">
 
-    <!-- Header -->
-    <header class="container">
-        <div class="logo">
-            <span class="logo-icon">▲</span> Apexion <span style="font-weight: 400; font-size: 14px; margin-left: 4px; color: var(--text-light)">CONSULTING</span>
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Case Studies</a>
-        </nav>
-        <div class="header-actions">
-            <a href="#" style="color: var(--navy); text-decoration: none; font-weight: 600; font-size: 15px;">Contact Us</a>
-            <a href="#" class="btn-primary">Book a Consultation &rarr;</a>
+    <!-- [SECTION 0] Global Navigation (Sticky Header) -->
+    <header id="mainHeader" class="glass-header fixed top-0 left-0 w-full z-50 py-4 px-6 md:px-12 transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Left: Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-obsidian border border-white/10 flex items-center justify-center text-brandRed font-black text-xl shadow-inner group-hover:border-brandRed/40 transition-colors">
+                    🐺
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-black text-lg tracking-wider text-white flex items-center gap-1">
+                        TSARO <span class="text-brandRed text-xs font-bold">DEFENCE</span>
+                    </span>
+                    <span class="text-[9px] tracking-[0.25em] text-textMuted uppercase -mt-1 font-mono">GLOBAL SECURITY</span>
+                </div>
+            </a>
+
+            <!-- Center: Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-textLight">
+                <a href="#about" class="hover:text-white hover:text-brandRed transition-colors">About</a>
+                <a href="#capabilities" class="hover:text-white hover:text-brandRed transition-colors">Capabilities</a>
+                <a href="#academy" class="hover:text-white hover:text-brandRed transition-colors">Academy</a>
+                <a href="#intelligence" class="hover:text-white hover:text-brandRed transition-colors">Intelligence</a>
+                <a href="#contact" class="hover:text-white hover:text-brandRed transition-colors">Contact</a>
+            </nav>
+
+            <!-- Right: Primary CTA -->
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="btn-brand-red px-5 py-2.5 rounded-md text-xs sm:text-sm font-semibold tracking-wide uppercase flex items-center gap-2">
+                    <span>Secure Consultation</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Strategic Solutions That Drive Your Success</h1>
-            <p>We help businesses overcome challenges, optimize operations, and achieve sustainable growth.</p>
-            <div class="hero-visual">
-                <!-- Full Hero Banner Image -->
-                <img src="./hero-banner.png" alt="Tactical Defense Operations" class="hero-img">
+    <!-- [SECTION 1] The Hero (Above the Fold) -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16 overflow-hidden tactical-grid">
+        <!-- Canvas Radar Simulation -->
+        <canvas id="radarCanvas"></canvas>
+
+        <!-- Ambient Vignette & Gradient Overlays -->
+        <div class="absolute inset-0 bg-radial-vignette pointer-events-none" style="background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(11, 12, 16, 0.8) 70%, #0B0C10 100%);"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian/40 to-obsidian pointer-events-none"></div>
+
+        <!-- Center Aligned Content -->
+        <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+            
+            <!-- Eyebrow Text -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brandRed/30 bg-brandRed/10 text-brandRed font-mono text-xs uppercase tracking-[0.25em] mb-8 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+                SECURING TOMORROW, TODAY.
+            </div>
+
+            <!-- Massive H1 Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.08] mb-6">
+                Next-Generation Defense for a <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-brandRed">Complex World.</span>
+            </h1>
+
+            <!-- Sub-headline -->
+            <p class="text-base sm:text-lg md:text-xl text-textMuted max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                We architect and deploy elite security infrastructure, tactical intelligence, and defense hardware for governments and enterprise organizations across the globe.
+            </p>
+
+            <!-- Inline Button Group -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a href="#contact" class="btn-brand-red w-full sm:w-auto px-8 py-4 rounded-md text-sm font-semibold tracking-wide uppercase flex items-center justify-center gap-2">
+                    <span>Request Strategic Consultation</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+                <a href="#capabilities" class="w-full sm:w-auto px-8 py-4 rounded-md text-sm font-semibold tracking-wide uppercase border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 text-white transition-all flex items-center justify-center gap-2">
+                    <span>View Core Capabilities</span>
+                </a>
+            </div>
+
+            <!-- Coordinate / Security Badges -->
+            <div class="mt-16 flex items-center gap-6 text-xs text-textMuted/60 font-mono">
+                <span>COORD: 9.0765° N, 7.3986° E</span>
+                <span>•</span>
+                <span>STATUS: OPERATIONAL [DEFCON 1]</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="hidden sm:inline">SECURITY CLEARANCE: LVL 4</span>
             </div>
         </div>
     </section>
 
-    <!-- Floating Stats Box -->
-    <div class="container stats-wrapper">
-        <div class="stats-box">
-            <div class="stat-item">
-                <div class="stat-icon">👥</div>
-                <div>
-                    <div class="stat-number">300+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">💼</div>
-                <div>
-                    <div class="stat-number">700+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon">🏆</div>
-                <div>
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Industry Awards</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Services Icons -->
-    <section class="container services-row">
-        <div class="service-icon-item">
-            <div class="service-icon">🛡️</div>
-            <p>Business Strategy</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">📢</div>
-            <p>Market Research</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">📊</div>
-            <p>Operational Excellence</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">💡</div>
-            <p>Financial Advisory</p>
-        </div>
-        <div class="service-icon-item">
-            <div class="service-icon">🎯</div>
-            <p>Change Management</p>
-        </div>
-    </section>
-
-    <!-- Dark Section -->
-    <section class="dark-section">
-        <div class="container">
-            <div class="dark-header">
-                <h2>Your Trusted Partner in Business Growth</h2>
-                <div class="dark-header-content">
-                    <p>We partner with forward-thinking organizations to deliver measurable results and long-term impact.</p>
-                    <a href="#">LET'S BUILD YOUR SUCCESS &rarr;</a>
-                </div>
+    <!-- [SECTION 2] The Authority Bar -->
+    <section class="bg-deepGray border-y border-white/5 py-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
+            <!-- Left Text -->
+            <div class="flex-shrink-0 text-xs font-mono font-bold tracking-widest text-textMuted uppercase flex items-center gap-2">
+                <svg class="w-4 h-4 text-brandRed" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
+                </svg>
+                <span>TRUSTED BY LEADING ORGANIZATIONS</span>
             </div>
 
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Consultants working">
-                </div>
-                <div class="about-card">
-                    <h3>200+</h3>
-                    <h4>Business Consultants</h4>
-                    <p>Our team of experienced consultants brings deep industry knowledge and innovative solutions to every challenge.</p>
-                    
-                    <ul class="card-list">
-                        <li>DATA-DRIVEN INSIGHTS <span>&rarr;</span></li>
-                        <li>TAILORED SOLUTIONS <span>&rarr;</span></li>
-                        <li>PROVEN RESULTS <span>&rarr;</span></li>
-                    </ul>
+            <!-- Right Elements: Infinite-scroll marquee -->
+            <div class="w-full overflow-hidden relative flex">
+                <div class="flex items-center gap-12 whitespace-nowrap animate-marquee">
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> US & Nigeria Operations
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Certified Security Consultants
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> 24/7 Threat Monitoring
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Tactical Systems Deployment
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Government & Enterprise Accredited
+                    </div>
 
-                    <div class="satisfaction-box">
-                        <div class="satisfaction-icon">📈</div>
-                        <div>
-                            <div style="font-weight: 600; font-size: 15px;">95% Client Satisfaction</div>
-                            <div style="font-size: 12px; color: #94A3B8;">We are committed to delivering excellence in every engagement.</div>
-                        </div>
+                    <!-- Duplicate for infinite loop -->
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> US & Nigeria Operations
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Certified Security Consultants
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> 24/7 Threat Monitoring
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Tactical Systems Deployment
+                    </div>
+                    <div class="flex items-center gap-2 text-textLight/70 font-semibold text-xs uppercase tracking-wider">
+                        <span class="text-brandRed">●</span> Government & Enterprise Accredited
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Impact Section -->
-    <section class="impact-section">
-        <div class="container">
-            <h2>Empowering Organizations<br>to Reach Their Full Potential</h2>
-            <p>We deliver actionable strategies and practical solutions that empower businesses to thrive in a competitive world.</p>
+    <!-- [SECTION 3] Core Capabilities (Products & Services) -->
+    <section id="capabilities" class="py-24 px-6 md:px-12 bg-obsidian relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandRed font-mono text-xs uppercase tracking-[0.2em] font-semibold">DEFENSE INFRASTRUCTURE</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 mb-4 tracking-tight">
+                    Strategic Defense Capabilities
+                </h2>
+                <p class="text-textMuted text-base sm:text-lg">
+                    Comprehensive, multi-tier defense strategies designed to preemptively neutralize complex threats across physical, digital, and human vectors.
+                </p>
+            </div>
+
+            <!-- 3 Interactive Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Security Infrastructure & Hardware -->
+                <div class="capability-card rounded-xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-lg bg-obsidian border border-white/10 flex items-center justify-center text-brandRed mb-6 group-hover:scale-110 group-hover:border-brandRed/50 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brandRed transition-colors">
+                            Security Infrastructure & Hardware
+                        </h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            State-of-the-art physical and digital defense systems engineered for absolute asset protection.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-textLight">
+                        <span>ASSET PROTECTION</span>
+                        <span class="text-brandRed group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tactical Intelligence & Advisory -->
+                <div class="capability-card rounded-xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-lg bg-obsidian border border-white/10 flex items-center justify-center text-brandRed mb-6 group-hover:scale-110 group-hover:border-brandRed/50 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brandRed transition-colors">
+                            Tactical Intelligence & Advisory
+                        </h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            Data-driven risk profiling, threat assessments, and elite consultancy for high-stakes environments.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-textLight">
+                        <span>THREAT PROFILING</span>
+                        <span class="text-brandRed group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Tsaro Defence Academy -->
+                <div id="academy" class="capability-card rounded-xl p-8 flex flex-col justify-between group">
+                    <div>
+                        <!-- Icon -->
+                        <div class="w-14 h-14 rounded-lg bg-obsidian border border-white/10 flex items-center justify-center text-brandRed mb-6 group-hover:scale-110 group-hover:border-brandRed/50 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brandRed transition-colors">
+                            Tsaro Defence Academy
+                        </h3>
+                        <p class="text-textMuted text-sm leading-relaxed mb-6">
+                            Equipping the next generation of security personnel with advanced tactical and crisis management methodologies.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-textLight">
+                        <span>TACTICAL TRAINING</span>
+                        <span class="text-brandRed group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
+    <!-- [SECTION 4] The Differentiator (Why Tsaro?) -->
+    <section id="about" class="py-24 px-6 md:px-12 bg-charcoal/40 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column: High-Res Tactical Media -->
+                <div class="relative group rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div class="aspect-w-16 aspect-h-10 w-full h-[420px] md:h-[500px] overflow-hidden relative">
+                        <img src="./hero-banner.png" alt="Tactical Operations Command" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90 contrast-125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between bg-obsidian/80 backdrop-blur-md p-4 rounded-lg border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                                <span class="text-xs font-mono font-bold tracking-wider uppercase text-white">LIVE FIELD OPS — SECTOR ALPHA</span>
+                            </div>
+                            <span class="text-xs font-mono text-brandRed font-semibold">SECURE TRANSMISSION</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Copy & Value Proposition -->
+                <div class="flex flex-col justify-center">
+                    <span class="text-brandRed font-mono text-xs uppercase tracking-[0.2em] font-semibold mb-3">THE TSARO DIFFERENCE</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                        Global Insight. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brandRed to-white">Local Execution.</span>
+                    </h2>
+                    
+                    <p class="text-textLight text-base sm:text-lg leading-relaxed mb-6 font-normal">
+                        With operational headquarters in the United States and Nigeria, Tsaro Global Defence bridges the gap between global defense innovations and localized security architectures.
+                    </p>
+
+                    <p class="text-textMuted text-base leading-relaxed mb-8">
+                        We don’t just react to threats; we anticipate them, neutralize them, and build the frameworks to prevent them. Our operatives combine field-tested battlefield methodologies with cutting-edge digital intelligence suites.
+                    </p>
+
+                    <!-- Action Link -->
+                    <div>
+                        <a href="#capabilities" class="inline-flex items-center gap-3 text-white hover:text-brandRed font-semibold text-sm tracking-wide group transition-colors">
+                            <span>Discover Our Methodology</span>
+                            <span class="w-8 h-8 rounded-full border border-white/20 group-hover:border-brandRed flex items-center justify-center group-hover:translate-x-1.5 transition-all">
+                                →
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- [SECTION 5] Intelligence & Lead Capture (The Magnet) -->
+    <section id="intelligence" class="py-24 px-6 md:px-12 bg-obsidian relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Contained Charcoal Card Section -->
+            <div class="bg-charcoal rounded-2xl p-8 sm:p-12 md:p-16 border border-white/10 shadow-2xl relative overflow-hidden">
+                <!-- Subtle tactical badge watermark -->
+                <div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none text-white text-[200px] font-black font-mono select-none">
+                    TG
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    
+                    <!-- Left Column: Copy -->
+                    <div class="lg:col-span-6">
+                        <span class="text-brandRed font-mono text-xs uppercase tracking-[0.2em] font-semibold">STRATEGIC BRIEFINGS</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+                            Intelligence Briefs & Policy Research
+                        </h2>
+                        <p class="text-textLight text-base sm:text-lg leading-relaxed mb-6">
+                            Stay ahead of the shifting geopolitical and economic landscape. Download our latest intelligence report on Nigeria's national security roadmap.
+                        </p>
+                        
+                        <div class="space-y-3 font-mono text-xs text-textMuted">
+                            <div class="flex items-center gap-2">
+                                <span class="text-brandRed">✓</span> Analysis of regional threat actors and hybrid warfare trends.
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-brandRed">✓</span> Critical infrastructure resilience frameworks for 2026-2027.
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-brandRed">✓</span> Immediate PDF delivery upon verified authorization.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Lead Form -->
+                    <div class="lg:col-span-6 bg-obsidian/80 backdrop-blur-sm p-8 rounded-xl border border-white/10 shadow-inner">
+                        <form id="leadCaptureForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
+                            <div>
+                                <label for="fullName" class="block text-xs font-mono font-medium text-textLight uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" id="fullName" required placeholder="e.g. Director Alex Mercer" class="w-full px-4 py-3 bg-charcoal/60 border border-white/10 rounded-md text-white placeholder-textMuted/50 text-sm focus:outline-none focus:border-brandRed transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="corpEmail" class="block text-xs font-mono font-medium text-textLight uppercase tracking-wider mb-2">Corporate Email</label>
+                                <input type="email" id="corpEmail" required placeholder="name@organization.gov / .com" class="w-full px-4 py-3 bg-charcoal/60 border border-white/10 rounded-md text-white placeholder-textMuted/50 text-sm focus:outline-none focus:border-brandRed transition-colors">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn-brand-red w-full py-4 rounded-md text-sm font-semibold tracking-wide uppercase flex items-center justify-center gap-2">
+                                <span>Download Secure Brief</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                            </button>
+
+                            <p class="text-[11px] text-textMuted text-center font-mono">
+                                Encrypted 256-Bit SSL Transmission. Your credentials are fully protected.
+                            </p>
+                        </form>
+
+                        <!-- Success Message Container (Initially Hidden) -->
+                        <div id="formSuccess" class="hidden text-center py-8 space-y-4">
+                            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto text-2xl">
+                                ✓
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Authorization Confirmed</h3>
+                            <p class="text-sm text-textLight">Your secure intelligence brief is ready. Download should begin shortly.</p>
+                            <button onclick="resetForm()" class="text-xs font-mono text-brandRed hover:underline uppercase tracking-wider">
+                                Request another brief →
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- [SECTION 6] Command Center (Footer) -->
+    <footer id="contact" class="bg-deepGray border-t border-white/10 pt-20 pb-12 px-6 md:px-12 text-sm">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+                
+                <!-- Column 1 (Brand) -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-obsidian border border-white/10 flex items-center justify-center text-brandRed font-black text-lg">
+                            🐺
+                        </div>
+                        <span class="font-black text-lg tracking-wider text-white">TSARO <span class="text-brandRed text-xs">DEFENCE</span></span>
+                    </div>
+                    <p class="text-textMuted text-sm leading-relaxed">
+                        Bridging innovation and absolute protection. Architecting defense postures that secure sovereigns, critical infrastructure, and high-level enterprise operations.
+                    </p>
+                    <div class="pt-2 font-mono text-xs text-textLight/70">
+                        GLOBAL HEADQUARTERS: USA & NIGERIA
+                    </div>
+                </div>
+
+                <!-- Column 2 (Nigeria HQ) -->
+                <div class="space-y-3">
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-brandRed font-bold">ABUJA, NIGERIA</h4>
+                    <p class="text-textLight leading-relaxed">
+                        Suite 600, 6th Floor, Sector A,<br>
+                        Shashilga Court, Ahmadu Bello Way.<br>
+                        Abuja, Nigeria
+                    </p>
+                    <p class="font-mono text-xs pt-1">
+                        <span class="text-textMuted">TEL:</span> <a href="tel:+2347043419078" class="text-white hover:text-brandRed transition-colors">+234 7043419078</a>
+                    </p>
+                </div>
+
+                <!-- Column 3 (USA HQ) -->
+                <div class="space-y-3">
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-brandRed font-bold">ORLANDO, FL</h4>
+                    <p class="text-textLight leading-relaxed">
+                        520 East Church Street,<br>
+                        Unit 1109,<br>
+                        Orlando Florida, 32801, USA
+                    </p>
+                    <p class="font-mono text-xs pt-1">
+                        <span class="text-textMuted">TEL:</span> <a href="tel:+19298882357" class="text-white hover:text-brandRed transition-colors">+1 9298882357</a>
+                    </p>
+                </div>
+
+                <!-- Column 4 (Quick Links & Social) -->
+                <div class="space-y-4">
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-brandRed font-bold">SECURE CHANNELS</h4>
+                    <p class="text-xs font-mono text-textMuted">
+                        DIRECT INQUIRIES:<br>
+                        <a href="mailto:info@tsaroglobaldefence.com" class="text-white hover:text-brandRed transition-colors">info@tsaroglobaldefence.com</a>
+                    </p>
+                    
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded bg-obsidian border border-white/10 hover:border-brandRed flex items-center justify-center text-textLight hover:text-white transition-colors" title="LinkedIn">
+                            in
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded bg-obsidian border border-white/10 hover:border-brandRed flex items-center justify-center text-textLight hover:text-white transition-colors" title="X (Twitter)">
+                            𝕏
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded bg-obsidian border border-white/10 hover:border-brandRed flex items-center justify-center text-textLight hover:text-white transition-colors" title="Facebook">
+                            f
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded bg-obsidian border border-white/10 hover:border-brandRed flex items-center justify-center text-textLight hover:text-white transition-colors" title="Instagram">
+                            ig
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-textMuted">
+                <p>Copyright © 2026 Tsaro Global Defence. All Rights Reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white transition-colors">Compliance</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Section 0: Smart Sticky Header (Hide on scroll down, show on scroll up)
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('mainHeader');
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+                // Scrolling down
+                header.classList.add('header-hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('header-hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // Section 1: Dynamic Radar Sweep Simulation
+        const canvas = document.getElementById('radarCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width, height, centerX, centerY, radius;
+            let angle = 0;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                centerX = width / 2;
+                centerY = height / 2;
+                radius = Math.min(width, height) * 0.45;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Targets
+            const blips = [
+                { r: 0.25, a: 0.8 },
+                { r: 0.55, a: 2.1 },
+                { r: 0.75, a: 4.2 },
+                { r: 0.40, a: 5.4 }
+            ];
+
+            function drawRadar() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Draw circles
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+                ctx.lineWidth = 1;
+
+                for (let i = 1; i <= 4; i++) {
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, (radius / 4) * i, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                // Crosshairs
+                ctx.beginPath();
+                ctx.moveTo(centerX - radius, centerY);
+                ctx.lineTo(centerX + radius, centerY);
+                ctx.moveTo(centerX, centerY - radius);
+                ctx.lineTo(centerX, centerY + radius);
+                ctx.stroke();
+
+                // Sweep line
+                const sweepX = centerX + Math.cos(angle) * radius;
+                const sweepY = centerY + Math.sin(angle) * radius;
+
+                const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+                grad.addColorStop(0, 'rgba(230, 32, 32, 0)');
+                grad.addColorStop(1, 'rgba(230, 32, 32, 0.15)');
+
+                ctx.save();
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, angle - 0.4, angle);
+                ctx.closePath();
+                ctx.fillStyle = grad;
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(sweepX, sweepY);
+                ctx.strokeStyle = 'rgba(230, 32, 32, 0.8)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                ctx.restore();
+
+                // Draw blips
+                blips.forEach(b => {
+                    const bx = centerX + Math.cos(b.a) * (radius * b.r);
+                    const by = centerY + Math.sin(b.a) * (radius * b.r);
+                    
+                    // Flash when sweep passes
+                    const diff = Math.abs((angle % (Math.PI * 2)) - (b.a % (Math.PI * 2)));
+                    const alpha = diff < 0.3 ? 1 : 0.2;
+
+                    ctx.fillStyle = `rgba(230, 32, 32, ${alpha})`;
+                    ctx.beginPath();
+                    ctx.arc(bx, by, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                angle += 0.015;
+                requestAnimationFrame(drawRadar);
+            }
+
+            drawRadar();
+        }
+
+        // Section 5: Form Handling
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('leadCaptureForm');
+            const success = document.getElementById('formSuccess');
+            const fullName = document.getElementById('fullName').value;
+
+            // Show success confirmation
+            form.classList.add('hidden');
+            success.classList.remove('hidden');
+
+            console.log("Intelligence Brief Requested for:", fullName);
+        }
+
+        function resetForm() {
+            document.getElementById('leadCaptureForm').reset();
+            document.getElementById('leadCaptureForm').classList.remove('hidden');
+            document.getElementById('formSuccess').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
