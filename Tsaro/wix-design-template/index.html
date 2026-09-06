@@ -18,14 +18,14 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#0B0C10',
-                        charcoal: '#1F2833',
-                        cardSurface: '#12161D',
+                        obsidian: '#18181B',
+                        charcoal: '#212126',
+                        cardSurface: '#1E1E22',
                         brandRed: '#E62020',
                         brandRedHover: '#D91A1A',
-                        textMuted: '#8C9BAE',
+                        textMuted: '#94A3B8',
                         textLight: '#C5C6C7',
-                        deepGray: '#101216'
+                        deepGray: '#131316'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -47,14 +47,14 @@
 
     <style>
         body {
-            background-color: #0B0C10;
+            background-color: #18181B;
             color: #FFFFFF;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
         .glass-nav {
-            background: rgba(11, 12, 16, 0.88);
+            background: rgba(24, 24, 27, 0.90);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -67,14 +67,14 @@
 
         .tactical-mesh {
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(230, 32, 32, 0.08) 0%, transparent 55%),
+                radial-gradient(circle at 50% 0%, rgba(230, 32, 32, 0.06) 0%, transparent 55%),
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 100% 100%, 48px 48px, 48px 48px;
         }
 
         .capability-card {
-            background: #12161D;
+            background: #212126;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-top: 2px solid transparent;
             transition: all 0.3s ease;
@@ -101,10 +101,10 @@
             width: 7px;
         }
         ::-webkit-scrollbar-track {
-            background: #0B0C10;
+            background: #18181B;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1F2833;
+            background: #2E2E34;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -150,7 +150,7 @@
             <img src="./hero-banner.png" alt="Defense Operations" class="w-full h-full object-cover object-center opacity-95 filter contrast-105 brightness-95">
             <!-- Subtle edge-blend and text scrim -->
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/40"></div>
-            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 45%, rgba(11, 12, 16, 0.1) 0%, rgba(11, 12, 16, 0.5) 80%, #0B0C10 100%);"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 45%, rgba(24, 24, 27, 0.1) 0%, rgba(24, 24, 27, 0.5) 80%, #18181B 100%);"></div>
         </div>
 
         <!-- Content -->
