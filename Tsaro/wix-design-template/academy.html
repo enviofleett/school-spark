@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Defence & Security Academy | Tsaro Global Defence</title>
-    <meta name="description" content="Tsaro Defence & Security Academy provides elite kinetic and non-kinetic security training, tactical marksmanship, executive protection, and operational intelligence.">
+    <meta name="description" content="Elite kinetic and non-kinetic security training for sovereign forces, executive protection cadres, and corporate security specialists.">
     <link rel="icon" type="image/png" href="./favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,11 +21,11 @@
                     colors: {
                         obsidian: '#18181B',
                         charcoal: '#212126',
-                        cardSurface: '#1E1E22',
+                        cardSurface: '#1D1D22',
                         brandRed: '#E62020',
                         brandRedHover: '#D91A1A',
-                        textMuted: '#94A3B8',
-                        textLight: '#C5C6C7',
+                        textMuted: '#8E8E93',
+                        textLight: '#D1D5DB',
                         deepGray: '#131316'
                     },
                     fontFamily: {
@@ -47,8 +47,8 @@
 
         .glass-nav {
             background: rgba(24, 24, 27, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -57,73 +57,70 @@
             transform: translateY(-100%);
         }
 
-        .tactical-mesh {
+        .hero-mesh {
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(230, 32, 32, 0.07) 0%, transparent 60%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 48px 48px, 48px 48px;
+                radial-gradient(circle at 50% -10%, rgba(230, 32, 32, 0.12) 0%, transparent 65%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 64px 64px, 64px 64px;
         }
 
-        .academy-card {
+        .course-card {
             background: #212126;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            border-radius: 1rem;
-            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .academy-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(230, 32, 32, 0.4);
-            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.7), 0 0 25px -4px rgba(230, 32, 32, 0.2);
+        .course-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.75), 0 0 20px -2px rgba(230, 32, 32, 0.15);
         }
 
-        .card-thumbnail {
-            background: linear-gradient(135deg, #18181B 0%, #151518 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        .course-img-wrap {
             position: relative;
             overflow: hidden;
         }
 
-        .btn-primary-red {
+        .course-img-wrap img {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .course-card:hover .course-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .btn-primary {
             background-color: #E62020;
             color: #FFFFFF;
             transition: all 0.2s ease;
         }
 
-        .btn-primary-red:hover {
+        .btn-primary:hover {
             background-color: #D91A1A;
-            box-shadow: 0 4px 18px rgba(230, 32, 32, 0.4);
+            box-shadow: 0 4px 18px rgba(230, 32, 32, 0.35);
         }
 
-        .btn-outline {
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.03);
-            color: #FFFFFF;
+        .filter-tab {
             transition: all 0.2s ease;
+            color: #8E8E93;
+            border-bottom: 2px solid transparent;
         }
 
-        .btn-outline:hover {
-            border-color: #E62020;
-            background: rgba(230, 32, 32, 0.08);
+        .filter-tab.active {
             color: #FFFFFF;
+            border-bottom-color: #E62020;
         }
 
-        .filter-btn.active {
-            background: #E62020;
-            color: #FFFFFF;
-            border-color: #E62020;
+        .filter-tab:hover:not(.active) {
+            color: #D1D5DB;
         }
 
-        /* Modal styling */
-        .modal-backdrop {
-            background: rgba(10, 10, 12, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+        /* Modal backdrop */
+        .modal-overlay {
+            background: rgba(12, 12, 14, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         ::-webkit-scrollbar {
@@ -165,8 +162,8 @@
 
             <!-- Action -->
             <div class="flex items-center gap-4">
-                <a href="#programs" class="btn-primary-red px-5 py-2.5 rounded text-xs font-semibold tracking-wider uppercase flex items-center gap-2">
-                    <span>Explore Cohorts</span>
+                <a href="#catalog" class="btn-primary px-5 py-2.5 rounded text-xs font-semibold tracking-wider uppercase flex items-center gap-2">
+                    <span>View Cohorts</span>
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -175,455 +172,391 @@
         </div>
     </header>
 
-    <!-- Academy Hero Section -->
-    <section class="relative pt-36 pb-20 px-6 lg:px-12 overflow-hidden tactical-mesh border-b border-white/5">
-        <div class="max-w-5xl mx-auto text-center">
+    <!-- Academy Hero -->
+    <section class="relative pt-36 pb-24 px-6 lg:px-12 hero-mesh border-b border-white/5">
+        <div class="max-w-6xl mx-auto">
             
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
-                <span class="w-2 h-2 rounded-full bg-brandRed animate-pulse"></span>
-                <span class="text-textLight font-mono text-xs uppercase tracking-[0.2em]">TACTICAL OPERATIONAL DOCTRINE</span>
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+                    <span class="text-textLight font-mono text-xs uppercase tracking-widest">DOCTRINE & OPERATIONAL READINESS</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                    Tsaro Defence & <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-brandRed">Security Academy</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-textLight leading-relaxed font-normal mb-8">
+                    Essential training in kinetic and non-kinetic security, filling a vital gap across sovereign and corporate defense landscapes. We combine evidence-based methodology with rigorous scenario immersions for armed forces, law enforcement, and private security cadres.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#catalog" class="btn-primary px-6 py-3.5 rounded-lg text-xs font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+                        <span>Explore Certified Programs</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                    <a href="#methodology" class="px-6 py-3.5 rounded-lg border border-white/15 hover:border-white/30 bg-white/[0.02] text-xs font-semibold tracking-wider uppercase text-white transition-colors">
+                        Training Methodology
+                    </a>
+                </div>
             </div>
 
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-6">
-                Tsaro Defence & <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-brandRed">Security Academy.</span>
-            </h1>
-
-            <p class="text-lg sm:text-xl text-textLight leading-relaxed max-w-3xl mx-auto font-normal mb-10">
-                Our Tsaro Security Academy provides essential training in non-kinetic and kinetic security, filling a vital gap in Africa's and the global security landscape. We focus on practical, evidence-based methods to enhance operational skills through a flexible, cohort-based approach.
-            </p>
-
-            <!-- Quick Metrics Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left border-t border-white/10 pt-10">
-                <div class="bg-charcoal/60 border border-white/5 p-4 rounded-xl">
-                    <span class="block text-brandRed font-mono text-2xl font-bold">100%</span>
-                    <span class="text-xs text-textMuted uppercase font-mono tracking-wider">Field Veteran Cadre</span>
+            <!-- Key Fact Strip -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-white/10">
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold text-white font-mono">100%</div>
+                    <div class="text-xs text-textMuted mt-1">Field-Veteran Instructors</div>
                 </div>
-                <div class="bg-charcoal/60 border border-white/5 p-4 rounded-xl">
-                    <span class="block text-white font-mono text-2xl font-bold">6+</span>
-                    <span class="text-xs text-textMuted uppercase font-mono tracking-wider">Specialized Tracks</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold text-white font-mono">Tier-1</div>
+                    <div class="text-xs text-textMuted mt-1">Accredited Tactical Ranges</div>
                 </div>
-                <div class="bg-charcoal/60 border border-white/5 p-4 rounded-xl">
-                    <span class="block text-white font-mono text-2xl font-bold">MIL/LE</span>
-                    <span class="text-xs text-textMuted uppercase font-mono tracking-wider">Accredited Syllabus</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold text-white font-mono">Kinetic +</div>
+                    <div class="text-xs text-textMuted mt-1">Non-Kinetic Hybrid Doctrine</div>
                 </div>
-                <div class="bg-charcoal/60 border border-white/5 p-4 rounded-xl">
-                    <span class="block text-brandRed font-mono text-2xl font-bold">Tier-1</span>
-                    <span class="text-xs text-textMuted uppercase font-mono tracking-wider">Tactical Ranges</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold text-white font-mono">Cohort</div>
+                    <div class="text-xs text-textMuted mt-1">Small-Group Immersions</div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Program Filter & Catalog Section -->
-    <section id="programs" class="py-20 px-6 lg:px-12 bg-obsidian relative">
-        <div class="max-w-7xl mx-auto">
+    <!-- Featured Flagship Program -->
+    <section class="py-16 px-6 lg:px-12 bg-obsidian border-b border-white/5">
+        <div class="max-w-6xl mx-auto">
             
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                    <span class="text-brandRed font-mono text-xs uppercase tracking-[0.2em] font-semibold block mb-2">CURRICULUM & COHORTS</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                        Available Security Programs
-                    </h2>
-                    <p class="text-textLight text-sm sm:text-base mt-2 max-w-2xl">
-                        Select a program below to review the syllabus, prerequisites, and operational focus. Click "Book Program" to initiate credential vetting and reservation.
-                    </p>
+            <div class="text-xs font-mono uppercase tracking-widest text-brandRed font-semibold mb-3">
+                FLAGSHIP COHORT SPOTLIGHT
+            </div>
+
+            <div class="bg-charcoal border border-white/10 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
+                <!-- Large Visual -->
+                <div class="lg:col-span-7 relative min-h-[340px] lg:min-h-full">
+                    <img src="./academy-close-protection.jpg" alt="Executive Protection Detail Training" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-black/30 lg:bg-gradient-to-r lg:from-transparent lg:to-charcoal"></div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1.5 rounded bg-black/70 backdrop-blur-md border border-white/15 text-white font-mono text-xs uppercase tracking-wider">
+                            Executive Detail • 3 Weeks
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Filter Controls -->
-                <div class="flex flex-wrap items-center gap-2">
-                    <button onclick="filterPrograms('all')" class="filter-btn active px-4 py-2 rounded-lg text-xs font-mono font-medium border border-white/10 transition-colors">
-                        ALL TRACKS
+                <!-- Program Briefing -->
+                <div class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-mono text-textMuted mb-2">
+                            <span>COURSE REF: CPES-01</span>
+                            <span>/</span>
+                            <span>DIPLOMATIC CADRE</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+                            Close Protection & Executive Escort Specialist
+                        </h3>
+                        <p class="text-textLight text-sm leading-relaxed mb-6">
+                            An elite, intensive operational immersion designed for protective security details, corporate security directors, and diplomatic escorts. Covers principal motorcade tactics, evasive driving maneuvers, advance route profiling, and close-quarters protective drills under active threat conditions.
+                        </p>
+
+                        <div class="space-y-2.5 text-xs text-textLight/90 border-t border-white/10 pt-4 mb-8">
+                            <div class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>
+                                <span>Principal Foot Formations & Anti-Ambush Protocols</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>
+                                <span>Armored Motorcade Tactics & Rapid Extraction</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brandRed"></span>
+                                <span>Threat Vector Profiling & Advance Reconnaissance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <span class="block text-[11px] font-mono text-textMuted uppercase">Next Induction</span>
+                            <span class="text-sm font-semibold text-white">October 15, 2026</span>
+                        </div>
+                        <button onclick="openBookingModal('Close Protection & Executive Escort Specialist (CPES)', 'CPES-01', '3 Weeks')" class="btn-primary px-6 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
+                            <span>Book Program</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Catalog Section with Filter Tabs -->
+    <section id="catalog" class="py-20 px-6 lg:px-12 bg-obsidian">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-white/10 gap-6">
+                <div>
+                    <span class="text-brandRed font-mono text-xs uppercase tracking-widest font-semibold block mb-1">PROGRAM DIRECTORY</span>
+                    <h2 class="text-3xl font-extrabold text-white tracking-tight">
+                        Tactical & Intelligence Programs
+                    </h2>
+                </div>
+
+                <!-- Clean Minimalist Filter Tabs -->
+                <div class="flex items-center gap-6 overflow-x-auto pb-1 text-sm font-medium">
+                    <button onclick="filterCategory('all', this)" class="filter-tab active pb-3 font-medium whitespace-nowrap">
+                        All Disciplines
                     </button>
-                    <button onclick="filterPrograms('protection')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-white/10 text-textLight hover:text-white transition-colors">
-                        PROTECTION
+                    <button onclick="filterCategory('kinetic', this)" class="filter-tab pb-3 whitespace-nowrap">
+                        Kinetic & Weapons
                     </button>
-                    <button onclick="filterPrograms('kinetic')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-white/10 text-textLight hover:text-white transition-colors">
-                        KINETIC & FIREARMS
+                    <button onclick="filterCategory('protection', this)" class="filter-tab pb-3 whitespace-nowrap">
+                        Protection & Medical
                     </button>
-                    <button onclick="filterPrograms('intel')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-white/10 text-textLight hover:text-white transition-colors">
-                        INTEL & CYBER
+                    <button onclick="filterCategory('intel', this)" class="filter-tab pb-3 whitespace-nowrap">
+                        Cyber & Intelligence
                     </button>
-                    <button onclick="filterPrograms('infrastructure')" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono font-medium border border-white/10 text-textLight hover:text-white transition-colors">
-                        INFRASTRUCTURE
+                    <button onclick="filterCategory('infrastructure', this)" class="filter-tab pb-3 whitespace-nowrap">
+                        Infrastructure Defence
                     </button>
                 </div>
             </div>
 
-            <!-- Programs Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Program Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="programGrid">
                 
-                <!-- Program 1: Close Protection -->
-                <div class="academy-card" data-category="protection">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <!-- Tactical Background Elements -->
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Executive Protection
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-PROT-01</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                </svg>
+                <!-- Program: Tactical Marksmanship -->
+                <div class="course-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="kinetic">
+                    <div>
+                        <div class="course-img-wrap h-56">
+                            <img src="./academy-marksmanship.jpg" alt="Tactical Marksmanship Training" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#212126] via-transparent to-black/20"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider">
+                                    Kinetic • 2 Weeks
+                                </span>
                             </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Tier-1 Sovereign Protective Detail</span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="text-[11px] font-mono text-textMuted uppercase mb-1">COURSE // TMS-02</div>
+                            <h3 class="text-xl font-bold text-white mb-3">
+                                Tactical Marksmanship & Dynamic Engagement
+                            </h3>
+                            <p class="text-textLight text-sm leading-relaxed mb-6">
+                                Advanced weapon manipulation and live-fire drills on tactical ranges. Emphasizes stress-fire target discrimination, low-light operations, and rapid primary-to-secondary transitions.
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-textMuted bg-obsidian/70 p-3 rounded-xl border border-white/5 mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Format</span>
+                                    <span class="text-white">Live-Fire Range</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Prerequisite</span>
+                                    <span class="text-white">Vetted LE / Armed</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between">
                         <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 3 WEEKS</span>
-                                <span>•</span>
-                                <span>COHORT: 16 MAX</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">
-                                Close Protection & Executive Escort Specialist (CPES)
-                            </h3>
-                            <p class="text-textLight text-sm leading-relaxed mb-6">
-                                Comprehensive operational doctrine for diplomatic escorts, corporate VIPs, and high-risk principals. Covers threat vector analysis, protective formations, motorcade tactics, and evasive operations.
-                            </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Principal Escort Formations & Foot Drills
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Evasive Anti-Ambush Motorcade Maneuvers
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Advance Route Reconnaissance & Secure Extraction
-                                </li>
-                            </ul>
+                            <span class="block text-[10px] font-mono text-textMuted uppercase">Next Intake</span>
+                            <span class="text-xs font-semibold text-white">November 02, 2026</span>
                         </div>
-
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">October 15, 2026</span>
-                            </div>
-                            <button onclick="openBookingModal('Close Protection & Executive Escort Specialist (CPES)', 'CRS-PROT-01', '3 Weeks')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
-                        </div>
+                        <button onclick="openBookingModal('Tactical Marksmanship & Dynamic Engagement', 'TMS-02', '2 Weeks')" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                            Book Program
+                        </button>
                     </div>
                 </div>
 
-                <!-- Program 2: Tactical Marksmanship -->
-                <div class="academy-card" data-category="kinetic">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Kinetic Firearms
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-FIRE-02</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v4m0 10v4m-9-9h4m10 0h4"></path>
-                                </svg>
+                <!-- Program: Counter-Terrorism CQB -->
+                <div class="course-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="kinetic">
+                    <div>
+                        <div class="course-img-wrap h-56">
+                            <img src="./academy-cqb.jpg" alt="Counter-Terrorism CQB Training" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#212126] via-transparent to-black/20"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider">
+                                    Special Ops • 4 Weeks
+                                </span>
                             </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Operational Tactical Engagement</span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="text-[11px] font-mono text-textMuted uppercase mb-1">COURSE // CQB-03</div>
+                            <h3 class="text-xl font-bold text-white mb-3">
+                                Counter-Terrorism & Urban Combat (CQB)
+                            </h3>
+                            <p class="text-textLight text-sm leading-relaxed mb-6">
+                                High-intensity simulation training in shoot-houses and structured urban environments. Teaches multi-room clearing, explosive/mechanical breaching, hostage recovery, and team coordination.
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-textMuted bg-obsidian/70 p-3 rounded-xl border border-white/5 mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Format</span>
+                                    <span class="text-white">Shoot-House Facility</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Prerequisite</span>
+                                    <span class="text-white">Tier-1 Security / MIL</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between">
                         <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 2 WEEKS</span>
-                                <span>•</span>
-                                <span>COHORT: 12 MAX</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">
-                                Tactical Marksmanship & Dynamic Engagement Systems
-                            </h3>
-                            <p class="text-textLight text-sm leading-relaxed mb-6">
-                                Advanced live-fire course designed for armed security personnel, law enforcement, and military operators focusing on precision shot placement under extreme cognitive and physical duress.
-                            </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Primary to Secondary Weapon Transitions
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Low-Light, NVG & Strobe Tactical Shooting
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Stress-Induced Kinetic Target Discrimination
-                                </li>
-                            </ul>
+                            <span class="block text-[10px] font-mono text-textMuted uppercase">Next Intake</span>
+                            <span class="text-xs font-semibold text-white">November 16, 2026</span>
                         </div>
-
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">November 02, 2026</span>
-                            </div>
-                            <button onclick="openBookingModal('Tactical Marksmanship & Dynamic Engagement Systems', 'CRS-FIRE-02', '2 Weeks')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
-                        </div>
+                        <button onclick="openBookingModal('Counter-Terrorism & Urban Combat (CQB)', 'CQB-03', '4 Weeks')" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                            Book Program
+                        </button>
                     </div>
                 </div>
 
-                <!-- Program 3: Urban Combat & CQB -->
-                <div class="academy-card" data-category="kinetic">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Special Operations
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-COMB-03</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                                </svg>
+                <!-- Program: Tactical Emergency Casualty Care -->
+                <div class="course-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="protection">
+                    <div>
+                        <div class="course-img-wrap h-56">
+                            <img src="./academy-combat-medic.jpg" alt="Tactical Combat Casualty Care" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#212126] via-transparent to-black/20"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider">
+                                    Medical • 10 Days
+                                </span>
                             </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Elite Close Quarters Battle</span>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="text-[11px] font-mono text-textMuted uppercase mb-1">COURSE // TECC-04</div>
+                            <h3 class="text-xl font-bold text-white mb-3">
+                                Tactical Emergency Casualty Care & Combat Medic
+                            </h3>
+                            <p class="text-textLight text-sm leading-relaxed mb-6">
+                                Standardized operational medicine for hostile zones. Prepares personnel to halt massive hemorrhage, manage airway trauma under fire, and execute rapid tactical evacuation (CASEVAC).
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-textMuted bg-obsidian/70 p-3 rounded-xl border border-white/5 mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Format</span>
+                                    <span class="text-white">Trauma Simulation</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Prerequisite</span>
+                                    <span class="text-white">Open to Security & Med</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between">
                         <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 4 WEEKS</span>
-                                <span>•</span>
-                                <span>COHORT: 14 MAX</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">
-                                Counter-Terrorism & Urban Close Quarters Battle (CQB)
-                            </h3>
-                            <p class="text-textLight text-sm leading-relaxed mb-6">
-                                High-intensity simulation training in structured urban terrain, shoot-houses, and high-density environments. Focuses on room clearing, hostage rescue, dynamic breaching, and perimeter isolation.
-                            </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Multi-Room Clearing & Corner Dominance
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Mechanical, Ballistic & Explosive Breaching
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Hostile Threat Isolation & Barricade Tactics
-                                </li>
-                            </ul>
+                            <span class="block text-[10px] font-mono text-textMuted uppercase">Next Intake</span>
+                            <span class="text-xs font-semibold text-white">October 26, 2026</span>
                         </div>
-
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">November 16, 2026</span>
-                            </div>
-                            <button onclick="openBookingModal('Counter-Terrorism & Urban Close Quarters Battle (CQB)', 'CRS-COMB-03', '4 Weeks')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
-                        </div>
+                        <button onclick="openBookingModal('Tactical Emergency Casualty Care & Combat Medic', 'TECC-04', '10 Days')" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                            Book Program
+                        </button>
                     </div>
                 </div>
 
-                <!-- Program 4: Combat Medic TECC -->
-                <div class="academy-card" data-category="protection">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Operational Medicine
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-MED-04</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
+                <!-- Program: Cyber Warfare & OSINT -->
+                <div class="course-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="intel">
+                    <div>
+                        <div class="course-img-wrap h-56">
+                            <img src="./academy-cyber-intel.jpg" alt="Cyber Warfare and OSINT Operations" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#212126] via-transparent to-black/20"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider">
+                                    Cyber Intel • 4 Weeks
+                                </span>
                             </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Certified Trauma First Responder</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 10 DAYS</span>
-                                <span>•</span>
-                                <span>COHORT: 18 MAX</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">
-                                Tactical Emergency Casualty Care & Combat Medic (TECC)
-                            </h3>
-                            <p class="text-textLight text-sm leading-relaxed mb-6">
-                                Certified life-saving protocol training for high-threat environments. Teaches operators how to manage massive hemorrhage, airway compromise, and blast trauma under active hostile fire.
-                            </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Care Under Fire & Direct Threat Care (DTC)
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Junctional Tourniquets & Wound Packing
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Tactical Evacuation (TACEVAC) & CASEVAC Rigging
-                                </li>
-                            </ul>
                         </div>
 
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">October 26, 2026</span>
-                            </div>
-                            <button onclick="openBookingModal('Tactical Emergency Casualty Care & Combat Medic (TECC)', 'CRS-MED-04', '10 Days')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Program 5: Cyber Warfare & OSINT -->
-                <div class="academy-card" data-category="intel">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Cyber & Intelligence
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-INT-05</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Strategic Digital Threat Specialist</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 4 WEEKS</span>
-                                <span>•</span>
-                                <span>COHORT: 16 MAX</span>
-                            </div>
+                        <div class="p-6">
+                            <div class="text-[11px] font-mono text-textMuted uppercase mb-1">COURSE // CYB-05</div>
                             <h3 class="text-xl font-bold text-white mb-3">
                                 Cyber Warfare, OSINT & Digital Threat Intelligence
                             </h3>
                             <p class="text-textLight text-sm leading-relaxed mb-6">
-                                Non-kinetic digital warfare immersion. Master Open-Source Intelligence gathering, counter-surveillance footprints, darknet actor tracking, and defensive hardening for critical infrastructure.
+                                Non-kinetic cyber defense and intelligence tradecraft. Focuses on advanced OSINT gathering, threat actor attribution, darknet surveillance, and operational security (OPSEC) for critical entities.
                             </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Advanced Social & Geolocation OSINT Tradecraft
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> SCADA & Industrial Control Systems (ICS) Hardening
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> OPSEC, Signal Obfuscation & Encrypted Comms
-                                </li>
-                            </ul>
-                        </div>
 
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">November 09, 2026</span>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-textMuted bg-obsidian/70 p-3 rounded-xl border border-white/5 mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Format</span>
+                                    <span class="text-white">Cyber Lab & Hybrid</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Prerequisite</span>
+                                    <span class="text-white">IT / Intel Background</span>
+                                </div>
                             </div>
-                            <button onclick="openBookingModal('Cyber Warfare, OSINT & Digital Threat Intelligence', 'CRS-INT-05', '4 Weeks')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
                         </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] font-mono text-textMuted uppercase">Next Intake</span>
+                            <span class="text-xs font-semibold text-white">November 09, 2026</span>
+                        </div>
+                        <button onclick="openBookingModal('Cyber Warfare, OSINT & Digital Threat Intelligence', 'CYB-05', '4 Weeks')" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                            Book Program
+                        </button>
                     </div>
                 </div>
 
-                <!-- Program 6: Critical Infrastructure Protection -->
-                <div class="academy-card" data-category="infrastructure">
-                    <div class="card-thumbnail h-52 p-6 flex flex-col justify-between">
-                        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#E62020 1px, transparent 1px); background-size: 16px 16px;"></div>
-                        <div class="flex justify-between items-start z-10">
-                            <span class="px-2.5 py-1 rounded bg-brandRed/20 border border-brandRed/40 text-brandRed font-mono text-[11px] font-semibold uppercase tracking-wider">
-                                Track: Infrastructure Defence
-                            </span>
-                            <span class="font-mono text-xs text-textMuted">CRS-INFR-06</span>
-                        </div>
-                        <div class="z-10 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#212126] border border-white/15 flex items-center justify-center text-brandRed shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <span class="text-[11px] font-mono uppercase text-textMuted tracking-wider block">Qualification Level</span>
-                                <span class="text-xs font-semibold text-white">Facility Security Command Chief</span>
+                <!-- Program: Critical Infrastructure Hardening -->
+                <div class="course-card rounded-2xl overflow-hidden flex flex-col justify-between" data-category="infrastructure">
+                    <div>
+                        <div class="course-img-wrap h-56">
+                            <img src="./academy-infrastructure.jpg" alt="Critical Infrastructure Security Facility" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#212126] via-transparent to-black/20"></div>
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-sm border border-white/10 text-white font-mono text-[11px] uppercase tracking-wider">
+                                    Infrastructure • 2 Weeks
+                                </span>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs font-mono text-textMuted mb-3">
-                                <span>DURATION: 2 WEEKS</span>
-                                <span>•</span>
-                                <span>COHORT: 15 MAX</span>
-                            </div>
+                        <div class="p-6">
+                            <div class="text-[11px] font-mono text-textMuted uppercase mb-1">COURSE // CIP-06</div>
                             <h3 class="text-xl font-bold text-white mb-3">
                                 Critical Infrastructure Hardening & Perimeter Defense
                             </h3>
                             <p class="text-textLight text-sm leading-relaxed mb-6">
-                                Specialized cadre for energy facilities, airports, data centers, and government complexes. Integrates kinetic barrier engineering, electronic access control, and counter-drone perimeter detection.
+                                Designed for security commanders managing power grids, ports, oil assets, and sovereign compounds. Integrates physical barrier design, counter-UAS (drone) defense, and integrated alarm grids.
                             </p>
-                            
-                            <ul class="space-y-2.5 text-xs font-mono text-textMuted border-t border-white/5 pt-5 mb-6">
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Red-Team Facility Penetration Vulnerability Audits
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Counter-UAS (Anti-Drone) Radar Integration
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="text-brandRed">✓</span> Command & Control (C2) Emergency Operations Center Setup
-                                </li>
-                            </ul>
-                        </div>
 
-                        <div class="pt-6 border-t border-white/5 flex items-center justify-between gap-4">
-                            <div>
-                                <span class="block text-[10px] font-mono text-textMuted uppercase">Next Induction</span>
-                                <span class="text-xs font-semibold text-white">December 01, 2026</span>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-textMuted bg-obsidian/70 p-3 rounded-xl border border-white/5 mb-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Format</span>
+                                    <span class="text-white">Facility Immersion</span>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase text-textMuted/70">Prerequisite</span>
+                                    <span class="text-white">Security Management</span>
+                                </div>
                             </div>
-                            <button onclick="openBookingModal('Critical Infrastructure Hardening & Perimeter Defense', 'CRS-INFR-06', '2 Weeks')" class="btn-primary-red px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider">
-                                Book Program
-                            </button>
                         </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between">
+                        <div>
+                            <span class="block text-[10px] font-mono text-textMuted uppercase">Next Intake</span>
+                            <span class="text-xs font-semibold text-white">December 01, 2026</span>
+                        </div>
+                        <button onclick="openBookingModal('Critical Infrastructure Hardening & Perimeter Defense', 'CIP-06', '2 Weeks')" class="btn-primary px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                            Book Program
+                        </button>
                     </div>
                 </div>
 
@@ -632,49 +565,57 @@
         </div>
     </section>
 
-    <!-- Academy Methodology Section -->
-    <section class="py-24 px-6 lg:px-12 bg-charcoal/30 border-y border-white/5 relative">
-        <div class="max-w-7xl mx-auto">
+    <!-- Methodology & Pillars Section -->
+    <section id="methodology" class="py-24 px-6 lg:px-12 bg-charcoal/40 border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brandRed font-mono text-xs uppercase tracking-[0.25em] font-semibold block mb-3">PEDAGOGICAL PILLARS</span>
+                <span class="text-brandRed font-mono text-xs uppercase tracking-widest font-semibold block mb-2">TRAINING ARCHITECTURE</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                    The Tsaro Training Doctrine
+                    Evidence-Based Operational Mastery
                 </h2>
-                <p class="text-textLight text-sm sm:text-base mt-3">
-                    Engineered to meet the realities of modern hybrid warfare, civil unrest, and asymmetrical threats.
+                <p class="text-textLight text-sm sm:text-base mt-3 leading-relaxed">
+                    We bridge theory and battlefield realities through structured field doctrine, ensuring graduates perform reliably under extreme duress.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-obsidian border border-white/5 p-8 rounded-2xl">
-                    <div class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold mb-6">01</div>
-                    <h3 class="text-lg font-bold text-white mb-3">Evidence-Based & Non-Kinetic</h3>
+                    <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold text-sm mb-6">
+                        01
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Kinetic & Non-Kinetic Integration</h3>
                     <p class="text-textMuted text-sm leading-relaxed">
-                        Beyond weapons mastery, our curriculum emphasizes situational de-escalation, behavioral profiling, crisis negotiation, and psychological resilience.
+                        Modern threats require balanced competency. We fuse marksmanship and combat tactics with crisis psychology, situational de-escalation, and intelligence gathering.
                     </p>
                 </div>
 
                 <div class="bg-obsidian border border-white/5 p-8 rounded-2xl">
-                    <div class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold mb-6">02</div>
-                    <h3 class="text-lg font-bold text-white mb-3">Live Dynamic Scenarios</h3>
+                    <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold text-sm mb-6">
+                        02
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Full-Spectrum Simulation</h3>
                     <p class="text-textMuted text-sm leading-relaxed">
-                        Training takes place in authentic simulation environments, including live-fire shoot houses, tactical convoy routes, and secure cyber ranges.
+                        Instruction takes place in dedicated shoot-houses, dynamic convoy routes, cyber laboratories, and emergency triage stations under realistic stress conditions.
                     </p>
                 </div>
 
                 <div class="bg-obsidian border border-white/5 p-8 rounded-2xl">
-                    <div class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold mb-6">03</div>
-                    <h3 class="text-lg font-bold text-white mb-3">Vetted Certification</h3>
+                    <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-brandRed font-mono font-bold text-sm mb-6">
+                        03
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Sovereign & Enterprise Vetting</h3>
                     <p class="text-textMuted text-sm leading-relaxed">
-                        Graduates receive formal certification recognized by defense institutions, sovereign security boards, and international security councils.
+                        Each candidate and organizational delegation undergoes background verification. Certifications are recognized across military, law enforcement, and corporate security councils.
                     </p>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto modal-backdrop">
+    <!-- Booking Modal Dialog -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto modal-overlay">
         <div class="relative w-full max-w-2xl bg-[#212126] border border-white/15 rounded-2xl shadow-2xl p-6 sm:p-10 my-8">
             
             <!-- Close Button -->
@@ -684,15 +625,15 @@
                 </svg>
             </button>
 
-            <!-- Form Content -->
+            <!-- Booking Form -->
             <div id="bookingFormWrapper">
                 <div class="mb-6">
-                    <span class="text-brandRed font-mono text-[11px] uppercase tracking-widest font-semibold block mb-1">PROGRAM ENROLLMENT & VETTING</span>
+                    <span class="text-brandRed font-mono text-[11px] uppercase tracking-widest font-semibold block mb-1">PROGRAM RESERVATION & VETTING</span>
                     <h3 id="modalCourseTitle" class="text-2xl font-bold text-white tracking-tight">
                         Reserve Academy Cohort
                     </h3>
                     <p class="text-xs font-mono text-textMuted mt-1" id="modalCourseMeta">
-                        CRS-PROT-01 • 3 WEEKS INTENSIVE
+                        PROGRAM CODE: CPES-01
                     </p>
                 </div>
 
@@ -702,41 +643,41 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Candidate Full Name *</label>
-                            <input type="text" required placeholder="e.g. Captain David Okonjo" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Candidate Full Name *</label>
+                            <input type="text" required placeholder="e.g. Samuel Adeyemi" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
                         </div>
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Official / Organization Email *</label>
-                            <input type="email" required placeholder="d.okonjo@agency.gov.ng" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Official / Corporate Email *</label>
+                            <input type="email" required placeholder="s.adeyemi@enterprise.com" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Direct Contact Phone *</label>
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Direct Phone / Secure Contact *</label>
                             <input type="tel" required placeholder="+234 / +1 (555) 000-0000" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
                         </div>
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Sponsoring Entity / Agency</label>
-                            <input type="text" required placeholder="e.g. Ministry of Defence / Private Corp" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Sponsoring Entity / Agency *</label>
+                            <input type="text" required placeholder="Government Agency, Firm, or Independent" class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Operational Background</label>
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Operational Background</label>
                             <select class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
-                                <option>Armed Forces / Military Personnel</option>
+                                <option>Armed Forces / Military</option>
                                 <option>Law Enforcement Officer (LEO)</option>
                                 <option>Private Security Contractor (PSC)</option>
-                                <option>Corporate Executive / Dignitary Protection</option>
+                                <option>Corporate Executive Protection</option>
                                 <option>Critical Infrastructure Specialist</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Preferred Cohort Batch</label>
+                            <label class="block text-xs font-medium text-textLight mb-1.5">Preferred Intake Cohort</label>
                             <select class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors">
-                                <option>Upcoming Induction (Immediate Vetting)</option>
+                                <option>Earliest Scheduled Induction</option>
                                 <option>Q4 2026 Batch Alpha</option>
                                 <option>Q1 2027 Batch Bravo</option>
                                 <option>Custom Organizational Delegation (10+)</option>
@@ -745,23 +686,23 @@
                     </div>
 
                     <div>
-                        <label class="block font-mono text-xs text-textLight uppercase tracking-wider mb-2">Security Vetting / Operational Notes</label>
-                        <textarea rows="3" placeholder="Specify any tactical prerequisites, current weapon certifications, or specific unit mission parameters..." class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors resize-none"></textarea>
+                        <label class="block text-xs font-medium text-textLight mb-1.5">Special Tactical Notes / Mission Focus</label>
+                        <textarea rows="3" placeholder="Specify any specific operational requirements, prior certifications, or delegation details..." class="w-full px-4 py-3 bg-[#18181B] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brandRed transition-colors resize-none"></textarea>
                     </div>
 
                     <div class="flex items-start gap-3 pt-2">
                         <input type="checkbox" required id="clearanceConsent" class="mt-1 accent-brandRed rounded border-white/20 bg-obsidian">
                         <label for="clearanceConsent" class="text-xs text-textMuted leading-relaxed">
-                            I confirm that the applicant or delegation is subject to sovereign background verification and security clearance by Tsaro Global Defence Admissions.
+                            I understand that induction into Tsaro Defence Academy is subject to standard credential vetting and background clearance.
                         </label>
                     </div>
 
                     <div class="pt-4 flex items-center justify-end gap-3">
-                        <button type="button" onclick="closeBookingModal()" class="btn-outline px-5 py-3 rounded text-xs font-mono uppercase tracking-wider">
+                        <button type="button" onclick="closeBookingModal()" class="px-5 py-3 rounded-lg border border-white/15 hover:border-white/30 text-xs font-mono uppercase tracking-wider text-white transition-colors">
                             Cancel
                         </button>
-                        <button type="submit" class="btn-primary-red px-6 py-3 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
-                            <span>Submit Application & Book</span>
+                        <button type="submit" class="btn-primary px-6 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
+                            <span>Submit Enrollment Request</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                             </svg>
@@ -770,21 +711,21 @@
                 </form>
             </div>
 
-            <!-- Success Message State -->
+            <!-- Confirmation State -->
             <div id="bookingSuccessState" class="hidden text-center py-8">
                 <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto mb-6">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-white mb-2">Enrollment Application Dispatched</h3>
+                <h3 class="text-2xl font-bold text-white mb-2">Reservation Requisition Received</h3>
                 <p class="text-textLight text-sm max-w-md mx-auto leading-relaxed mb-6">
-                    Your preliminary reservation has been registered with the Tsaro Academy Admissions Office. A secure dossier and vetting requisition form will be transmitted to your official email within 24 hours.
+                    Your preliminary reservation has been recorded by the Academy Admissions Board. A secure intake dossier and vetting packet will be transmitted to your email within 24 hours.
                 </p>
-                <div class="p-4 bg-white/[0.02] border border-white/10 rounded-xl font-mono text-xs text-textMuted max-w-sm mx-auto mb-8">
+                <div class="p-4 bg-white/[0.02] border border-white/10 rounded-xl font-mono text-xs text-textMuted max-w-xs mx-auto mb-8">
                     REF CODE: <span id="confirmedRefCode" class="text-brandRed font-bold">TSA-ACAD-8849</span>
                 </div>
-                <button onclick="closeBookingModal()" class="btn-primary-red px-8 py-3 rounded text-xs font-semibold uppercase tracking-wider">
+                <button onclick="closeBookingModal()" class="btn-primary px-8 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider">
                     Return to Academy
                 </button>
             </div>
@@ -838,7 +779,7 @@
                 <div class="space-y-4">
                     <h4 class="font-mono text-xs uppercase tracking-widest text-brandRed font-bold">COMMUNICATIONS</h4>
                     <p class="text-xs font-mono text-textMuted">
-                        ACADEMY DIRECT DESK:<br>
+                        ACADEMY DIRECT INQUIRIES:<br>
                         <a href="mailto:academy@tsaroglobaldefence.com" class="text-white hover:text-brandRed transition-colors">academy@tsaroglobaldefence.com</a>
                     </p>
                     
@@ -871,7 +812,7 @@
         </div>
     </footer>
 
-    <!-- Interactive Script -->
+    <!-- Interactive Logic -->
     <script>
         // Navbar auto-hide
         let lastScrollY = window.scrollY;
@@ -888,12 +829,12 @@
         }, { passive: true });
 
         // Category Filter
-        function filterPrograms(category) {
-            const cards = document.querySelectorAll('.academy-card');
-            const buttons = document.querySelectorAll('.filter-btn');
+        function filterCategory(category, buttonEl) {
+            const cards = document.querySelectorAll('#programGrid > div');
+            const buttons = document.querySelectorAll('.filter-tab');
 
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            buttonEl.classList.add('active');
 
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -904,7 +845,7 @@
             });
         }
 
-        // Booking Modal Management
+        // Modal Handling
         const bookingModal = document.getElementById('bookingModal');
         const modalCourseTitle = document.getElementById('modalCourseTitle');
         const modalCourseMeta = document.getElementById('modalCourseMeta');
@@ -916,11 +857,10 @@
 
         function openBookingModal(courseName, courseCode, duration) {
             modalCourseTitle.textContent = courseName;
-            modalCourseMeta.textContent = `${courseCode} • ${duration.toUpperCase()} IMMERSION`;
+            modalCourseMeta.textContent = `COURSE REF: ${courseCode} • ${duration.toUpperCase()} IMMERSION`;
             selectedCourseName.value = courseName;
             selectedCourseCode.value = courseCode;
 
-            // Reset view state
             bookingFormWrapper.classList.remove('hidden');
             bookingSuccessState.classList.add('hidden');
 
@@ -933,14 +873,12 @@
             document.body.style.overflow = '';
         }
 
-        // Close on escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !bookingModal.classList.contains('hidden')) {
                 closeBookingModal();
             }
         });
 
-        // Close when clicking modal backdrop outside container
         bookingModal.addEventListener('click', (e) => {
             if (e.target === bookingModal) {
                 closeBookingModal();
@@ -949,9 +887,9 @@
 
         function handleBookingSubmit(e) {
             e.preventDefault();
-            const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-            const code = selectedCourseCode.value || 'CRS';
-            confirmedRefCode.textContent = `TSA-${code}-${randomSuffix}`;
+            const randomCode = Math.floor(1000 + Math.random() * 9000);
+            const prefix = selectedCourseCode.value || 'CAD';
+            confirmedRefCode.textContent = `TSA-${prefix}-${randomCode}`;
             
             bookingFormWrapper.classList.add('hidden');
             bookingSuccessState.classList.remove('hidden');
