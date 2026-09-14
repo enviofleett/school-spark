@@ -18,9 +18,21 @@ export default async function AdminLayout({
     redirect('/login')
   }
 
-  // Optional: Check if user has 'admin' role in user_roles table
-  // const { data: roleData } = await supabase.from('user_roles').select('role').eq('user_id', user.id).single();
-  // if (roleData?.role !== 'admin') { return <div>Access Denied</div> }
+  // Check if user has 'admin' role in user_roles table
+  const { data: roleData } = await supabase.from('user_roles').select('role').eq('user_id', user.id).maybeSingle();
+  if (roleData?.role !== 'admin') { 
+    return (
+      <div className="min-h-screen bg-obsidian flex items-center justify-center p-6 text-center">
+        <div>
+          <h1 className="text-2xl font-bold text-brandRed mb-4">Access Denied</h1>
+          <p className="text-textLight mb-6">You do not have administrative privileges.</p>
+          <form action={logout}>
+            <button className="px-6 py-2 bg-brandRed text-white rounded hover:bg-red-700 transition">Sign Out</button>
+          </form>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-obsidian text-white flex flex-col md:flex-row">
@@ -42,6 +54,9 @@ export default async function AdminLayout({
           </Link>
           <Link href="/admin/menus" className="block px-4 py-2 rounded text-sm font-medium text-textLight hover:bg-white/5 hover:text-white transition-colors">
             Menus
+          </Link>
+          <Link href="/admin/media" className="block px-4 py-2 rounded text-sm font-medium text-textLight hover:bg-white/5 hover:text-white transition-colors">
+            Media Library
           </Link>
           <Link href="/admin/settings" className="block px-4 py-2 rounded text-sm font-medium text-textLight hover:bg-white/5 hover:text-white transition-colors">
             Global Settings

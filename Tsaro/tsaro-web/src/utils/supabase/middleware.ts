@@ -28,7 +28,29 @@ export async function updateSession(request: NextRequest) {
   )
 
   // refreshing the auth token
-  await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Protect /admin routes
+  if (request.nextUrl.pathname.startsWith('/admin')) {
+    if (!user) {
+      // Not logged in -> redirect to login
+      const loginUrl = new URL('/login', request.url)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    // Check if user has 'admin' role
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .single()
+      
+    if (!roleData || roleData.role !== 'admin') {
+      // Logged in but not an admin -> redirect to home (or a 403 page)
+      const homeUrl = new URL('/', request.url)
+      return NextResponse.redirect(homeUrl)
+    }
+  }
 
   return supabaseResponse
 }

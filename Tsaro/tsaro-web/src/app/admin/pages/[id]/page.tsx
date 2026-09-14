@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
+import SectionForm from './SectionForm'
 
 export default async function EditPage({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -127,18 +128,8 @@ export default async function EditPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* JSON Editor for Content (MVP approach) */}
-              <form action={updateSectionContent} className="space-y-3">
-                <input type="hidden" name="section_id" value={section.id} />
-                <label className="block text-sm font-medium text-textLight">Content (JSON)</label>
-                <textarea 
-                  name="content" 
-                  defaultValue={JSON.stringify(section.content, null, 2)} 
-                  className="w-full px-4 py-2 bg-deepGray border border-white/10 rounded text-white h-48 font-mono text-sm" 
-                />
-                <button type="submit" className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded text-white font-medium text-sm transition-colors">
-                  Save Content
-                </button>
-              </form>
+              {/* Custom Form Editor */}
+              <SectionForm section={section} updateAction={updateSectionContent} />
             </div>
           ))}
 
