@@ -13,7 +13,7 @@ export default async function HomePage() {
   const supabase = await createClient()
 
   // Fetch the page content for 'home'
-  const { data: page } = await supabase.from('pages').select('id').eq('slug', 'home').single()
+  const { data: page } = await supabase.from('pages').select('id').eq('slug', 'home').maybeSingle()
   
   let sections: any[] = []
   if (page) {

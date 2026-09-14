@@ -5,7 +5,7 @@ export default async function Navbar() {
   const supabase = await createClient()
 
   // Fetch 'main_header' menu
-  const { data: menu } = await supabase.from('menus').select('id').eq('name', 'main_header').single()
+  const { data: menu } = await supabase.from('menus').select('id').eq('name', 'main_header').maybeSingle()
   
   let navLinks: any[] = []
   
