@@ -1,4 +1,32 @@
 export default function CapabilityGrid({ content }: { content?: any }) {
+  // Extract arms from content, or fallback to the new content with old layout
+  const arms = content?.arms || [
+    {
+      title: "Strategy & Public Sector Advisory",
+      description: "Policy design, regulatory structure, and the institutional groundwork a government needs settled before anything can be built on top of it.",
+      link: "#",
+      tag: "ARM 01"
+    },
+    {
+      title: "Delivery, Procurement & Construction",
+      description: "Programme management, supply chain, and construction oversight that carries a strategy through to something a minister can actually point to.",
+      link: "#",
+      tag: "ARM 02"
+    },
+    {
+      title: "Institute",
+      description: "A talent and convening arm — training programmes and a standing forum for the people who will run what we help build.",
+      link: "/academy",
+      tag: "ARM 03"
+    }
+  ]
+
+  const svgs = [
+    <svg key="1" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>,
+    <svg key="2" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>,
+    <svg key="3" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+  ]
+
   return (
     <section id="capabilities" className="py-24 px-6 md:px-12 bg-obsidian relative">
         <div className="max-w-7xl mx-auto">
@@ -6,14 +34,10 @@ export default function CapabilityGrid({ content }: { content?: any }) {
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
                 <div className="md:w-1/2">
-                    <h2 className="text-4xl sm:text-5xl font-serif font-normal text-white tracking-tight leading-tight">
-                        {content?.title || (
-                            <>
-                                Two disciplines. <br />
-                                One accountable firm.
-                            </>
-                        )}
-                    </h2>
+                    <h2 
+                      className="text-4xl sm:text-5xl font-serif font-normal text-white tracking-tight leading-tight"
+                      dangerouslySetInnerHTML={{ __html: content?.title || "Two disciplines. <br /> One accountable firm." }}
+                    />
                 </div>
                 <div className="md:w-1/3">
                     <p className="text-textMuted text-sm leading-relaxed">
@@ -23,68 +47,31 @@ export default function CapabilityGrid({ content }: { content?: any }) {
             </div>
 
             {/* Grid Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 border border-white/10 rounded-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                {/* Arm 01 */}
-                <div className="p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors group">
-                    <div>
-                        <div className="text-[11px] font-mono text-brandRed font-semibold tracking-widest uppercase mb-8">
-                            ARM 01
+                {arms.map((arm: any, index: number) => (
+                    <div key={index} className="capability-card rounded-xl p-8 flex flex-col justify-between group">
+                        <div>
+                            <div className="w-12 h-12 rounded bg-[#161B22] border border-white/10 flex items-center justify-center text-brandRed mb-6">
+                                {svgs[index % svgs.length]}
+                            </div>
+                            <h3 className="text-xl font-bold text-white mb-3">
+                                {arm.title}
+                            </h3>
+                            <p className="text-textMuted text-sm leading-relaxed mb-6">
+                                {arm.description}
+                            </p>
                         </div>
-                        <h3 className="text-2xl font-semibold text-white mb-4">
-                            Strategy & Public Sector Advisory
-                        </h3>
-                        <p className="text-textMuted text-sm leading-relaxed mb-12">
-                            Policy design, regulatory structure, and the institutional groundwork a government needs settled before anything can be built on top of it.
-                        </p>
-                    </div>
-                    <div>
-                        <a href="#" className="inline-flex items-center gap-2 text-xs font-bold text-white tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all pb-1">
-                            EXPLORE <span className="font-normal">→</span>
-                        </a>
-                    </div>
-                </div>
-
-                {/* Arm 02 */}
-                <div className="p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors group">
-                    <div>
-                        <div className="text-[11px] font-mono text-brandRed font-semibold tracking-widest uppercase mb-8">
-                            ARM 02
+                        <div className="pt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-textMuted">
+                            <a href={arm.link || "#"} className="hover:text-brandRed transition-colors uppercase tracking-widest">
+                                EXPLORE
+                            </a>
+                            <a href={arm.link || "#"} className="text-brandRed font-bold group-hover:translate-x-1 transition-transform">
+                                →
+                            </a>
                         </div>
-                        <h3 className="text-2xl font-semibold text-white mb-4">
-                            Delivery, Procurement & Construction
-                        </h3>
-                        <p className="text-textMuted text-sm leading-relaxed mb-12">
-                            Programme management, supply chain, and construction oversight that carries a strategy through to something a minister can actually point to.
-                        </p>
                     </div>
-                    <div>
-                        <a href="#" className="inline-flex items-center gap-2 text-xs font-bold text-white tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all pb-1">
-                            EXPLORE <span className="font-normal">→</span>
-                        </a>
-                    </div>
-                </div>
-
-                {/* Arm 03 */}
-                <div id="academy" className="p-10 flex flex-col justify-between hover:bg-white/[0.02] transition-colors group">
-                    <div>
-                        <div className="text-[11px] font-mono text-brandRed font-semibold tracking-widest uppercase mb-8">
-                            ARM 03
-                        </div>
-                        <h3 className="text-2xl font-semibold text-white mb-4">
-                            Institute
-                        </h3>
-                        <p className="text-textMuted text-sm leading-relaxed mb-12">
-                            A talent and convening arm — training programmes and a standing forum for the people who will run what we help build.
-                        </p>
-                    </div>
-                    <div>
-                        <a href="/academy" className="inline-flex items-center gap-2 text-xs font-bold text-white tracking-widest uppercase border-b border-transparent group-hover:border-white transition-all pb-1">
-                            EXPLORE <span className="font-normal">→</span>
-                        </a>
-                    </div>
-                </div>
-
+                ))}
             </div>
         </div>
     </section>
