@@ -1,23 +1,30 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { updateSession } from '@/utils/supabase/middleware'
 
 export async function proxy(request: NextRequest) {
-  // First update Supabase session
-  const response = await updateSession(request)
+  let response = NextResponse.next({ request })
 
-  const url = request.nextUrl;
-  const hostname = request.headers.get('host') || '';
+  // Only run Supabase session logic if env vars are configured
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { updateSession } = await import('@/utils/supabase/middleware')
+      response = await updateSession(request)
+    } catch {
+      // Supabase middleware failed — continue without session
+    }
+  }
+
+  const url = request.nextUrl
+  const hostname = request.headers.get('host') || ''
 
   // Handle subdomain routing for 'academy'
   if (hostname.startsWith('academy.')) {
-    const rewriteUrl = new URL(`/academy${url.pathname === '/' ? '' : url.pathname}`, request.url);
-    // Since updateSession might return a modified response, we can just rewrite using NextResponse.rewrite
+    const rewriteUrl = new URL(`/academy${url.pathname === '/' ? '' : url.pathname}`, request.url)
     return NextResponse.rewrite(rewriteUrl, {
-      headers: response.headers
-    });
+      headers: response.headers,
+    })
   }
 
-  return response;
+  return response
 }
 
 export const config = {

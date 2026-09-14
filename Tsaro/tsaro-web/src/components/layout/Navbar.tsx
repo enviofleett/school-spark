@@ -1,22 +1,25 @@
-import { createClient } from '@/utils/supabase/server'
 import Link from 'next/link'
 
 export default async function Navbar() {
-  const supabase = await createClient()
-
-  // Fetch 'main_header' menu
-  const { data: menu } = await supabase.from('menus').select('id').eq('name', 'main_header').maybeSingle()
-  
   let navLinks: any[] = []
-  
-  if (menu) {
-    const { data: items } = await supabase
-      .from('menu_items')
-      .select('*')
-      .eq('menu_id', menu.id)
-      .order('sort_order')
-      
-    if (items) navLinks = items
+
+  // Only attempt Supabase fetch if env vars are configured
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    try {
+      const { createClient } = await import('@/utils/supabase/server')
+      const supabase = await createClient()
+      const { data: menu } = await supabase.from('menus').select('id').eq('name', 'main_header').maybeSingle()
+      if (menu) {
+        const { data: items } = await supabase
+          .from('menu_items')
+          .select('*')
+          .eq('menu_id', menu.id)
+          .order('sort_order')
+        if (items) navLinks = items
+      }
+    } catch {
+      // Supabase unavailable — fall through to static links
+    }
   }
 
   // Fallback links if CMS is empty
