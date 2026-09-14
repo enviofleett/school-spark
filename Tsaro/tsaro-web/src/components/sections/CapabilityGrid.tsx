@@ -31,19 +31,15 @@ export default function CapabilityGrid({ content }: { content?: any }) {
     <section id="capabilities" className="py-24 px-6 md:px-12 bg-obsidian relative">
         <div className="max-w-7xl mx-auto">
             
-            {/* Header Section */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
-                <div className="md:w-1/2">
-                    <h2 
-                      className="text-4xl sm:text-5xl font-serif font-normal text-white tracking-tight leading-tight"
-                      dangerouslySetInnerHTML={{ __html: content?.title || "Two disciplines. <br /> One accountable firm." }}
-                    />
-                </div>
-                <div className="md:w-1/3">
-                    <p className="text-textMuted text-sm leading-relaxed">
-                        {content?.subtitle || "Most advisors stop at the strategy. We stay for the delivery."}
-                    </p>
-                </div>
+            {/* Header Section (Centered like original design) */}
+            <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 
+                    className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-3 mb-4 tracking-tight"
+                    dangerouslySetInnerHTML={{ __html: content?.title || "Two disciplines. <br /> One accountable firm." }}
+                />
+                <p className="text-textMuted text-base sm:text-lg">
+                    {content?.subtitle || "Most advisors stop at the strategy. We stay for the delivery."}
+                </p>
             </div>
 
             {/* Grid Section */}
